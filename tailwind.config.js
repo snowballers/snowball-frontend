@@ -19,7 +19,7 @@ module.exports = {
         '900': '#273f54',
       },
     },
-    containter: {
+    container: {
       'center': true,
     }
   },
