@@ -2,14 +2,16 @@ import styles from './styles/Snowflake.module.scss';
 
 const Snowflake = () => {
   return (
-    <div className={styles.snowflakeWrapper}>
+    <div className={`min-h-screen w-full sm:w-6/12 z-0 ${styles['snowflake-wrapper']}`}>
       {Array(100)
         .fill(true)
-        .map((_, i) => (
-          <div className={styles.snowflake} key={i}>
-            ❅
-          </div>
-        ))}
+        .map((_, i) => {
+          return (
+            <div className={styles.snowflake} key={i}>
+              {i % 2 === 0 ? '❄' : '❅'}
+            </div>
+          );
+        })}
     </div>
   );
 };
