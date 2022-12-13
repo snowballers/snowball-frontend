@@ -1,7 +1,7 @@
 .snowflake-wrapper {
-  height: 100vh;
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
+  position: absolute;
+  background: radial-gradient(ellipse at bottom, #2e5576 0%, #090a0f 100%);
   filter: drop-shadow(0 0 10px white);
 }
 
