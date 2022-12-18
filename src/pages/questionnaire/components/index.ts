@@ -1,4 +1,4 @@
 import ProgressBar from "./ProgressBar";
-import Question from "./Question";
+import QuestionWrapper from "./QuestionWrapper";
 
-export {ProgressBar, Question}
+export { ProgressBar, QuestionWrapper }
