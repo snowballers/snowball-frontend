@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 type Props = {
   question: number;
@@ -15,9 +15,19 @@ const ProgressBar = ({ question, totalQuestions }: Props) => {
     return Math.floor(((question + 1) / totalQuestions) * 100);
   }
 
-  useLayoutEffect(() => {
+  function handleResize() {
     if (currentProgressRef.current === null) return;
     setLeft(currentProgressRef.current.clientWidth - 32);
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useLayoutEffect(() => {
+    handleResize();
   }, []);
 
   return (
