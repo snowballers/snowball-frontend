@@ -1,5 +1,10 @@
 export type Question = {
-    question: string;
-    answer: string[];
-    selectedAnswer: number;
+    id: number;
+    content: string;
+}
+
+export type Answer = {
+    question_id: number;
+    id: number;
+    content: string;
 }

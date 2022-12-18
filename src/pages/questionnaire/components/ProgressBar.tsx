@@ -7,12 +7,12 @@ type Props = {
 };
 
 const ProgressBar = ({ question, totalQuestions }: Props) => {
-  const [percentage, setPercentage] = useState<string>(`${getPercentage(question, totalQuestions)}%`);
+  const [percentage, setPercentage] = useState<string>();
   const [left, setLeft] = useState<number>();
   const currentProgressRef = useRef<HTMLDivElement>(null);
 
   function getPercentage(question: number, totalQuestions: number): number {
-    return Math.floor(((question + 1) / totalQuestions) * 100);
+    return Math.floor((question / totalQuestions) * 100);
   }
 
   function handleResize() {
@@ -29,6 +29,14 @@ const ProgressBar = ({ question, totalQuestions }: Props) => {
   useLayoutEffect(() => {
     handleResize();
   }, []);
+
+  useEffect(() => {
+    setPercentage(`${getPercentage(question, totalQuestions)}%`);
+  }, [question, totalQuestions]);
+
+  useEffect(() => {
+    handleResize();
+  }, [percentage]);
 
   return (
     <>
