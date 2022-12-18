@@ -1,12 +1,8 @@
 import Image from 'next/image';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { ProgressBarProps } from '../types';
 
-type Props = {
-  question: number;
-  totalQuestions: number;
-};
-
-const ProgressBar = ({ question, totalQuestions }: Props) => {
+const ProgressBar = ({ question, totalQuestions }: ProgressBarProps) => {
   const [percentage, setPercentage] = useState<string>();
   const [left, setLeft] = useState<number>();
   const currentProgressRef = useRef<HTMLDivElement>(null);
@@ -42,10 +38,10 @@ const ProgressBar = ({ question, totalQuestions }: Props) => {
     <>
       <div className="flex justify-between mb-1">
         <span></span>
-        <span className="text-base font-medium text-primary-700 dark:text-white">{percentage}</span>
+        <span className="text-base font-medium text-primary-600 dark:text-white">{percentage}</span>
       </div>
-      <div className="relative w-full bg-primary-200 rounded-full h-2.5 dark:bg-gray-700">
-        <div ref={currentProgressRef} className="bg-primary-700 h-2.5 rounded-full" style={{ width: percentage }}></div>
+      <div className="relative w-full bg-primary-200 rounded-full h-2.5">
+        <div ref={currentProgressRef} className="bg-primary-600 h-2.5 rounded-full" style={{ width: percentage }}></div>
         <div className="absolute -top-[18px]" style={{ left: left }}>
           <Image src="/roll-cropped.gif" alt="roll" width="32" height="32" />
         </div>
