@@ -2,7 +2,6 @@
   overflow: hidden;
   position: absolute;
   background: radial-gradient(ellipse at bottom, #2e5576 0%, #090a0f 100%);
-  filter: drop-shadow(0 0 10px white);
 }
 
 @function random_range($min, $max) {
@@ -14,12 +13,15 @@
 .snowflake {
   $total: 200;
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 1px;
+  height: 1px;
   color: #fff;
   font-size: 1em;
   font-family: Arial;
   border-radius: 50%;
+  box-shadow: 5px 8px 10px 4px rgba(255,255,255,0.75);
+  -webkit-box-shadow: 5px 8px 10px 4px rgba(255,255,255,0.75);
+  -moz-box-shadow: 5px 8px 10px 4px rgba(255,255,255,0.75);
 
   @for $i from 1 through $total {
     $random-x: random(1000000) * 0.0001vw;
