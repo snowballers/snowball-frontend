@@ -1,12 +1,15 @@
 import type { NextPage } from 'next';
+import Image from 'next/image';
 
 import Container from '@components/Container';
 
 const Loading: NextPage = () => {
   return (
     <Container bgColor="bg-primary-100">
+      <Image src="/roll-full.gif" alt="roll" fill objectFit="cover" />
+
       <div className="pt-8">
-        <h1 className="text-4xl text-center text-primary-900">로딩 페이지</h1>
+        <p className="absolute inset-x-0 bottom-52 text-2xl text-center text-primary-600">눈사람을 완성하는 중입니다...</p>
       </div>
     </Container>
   );
