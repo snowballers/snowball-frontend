@@ -9,8 +9,16 @@ const Loading: NextPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    setTimeout(() => router.push('/result'), 3000);
-  });
+    setTimeout(() => {
+      if (!router.query.questions) return;
+      if (typeof router.query.questions !== 'string') return;
+
+      const questions = JSON.parse(router.query.questions);
+      router.query = { ...router.query, questions: questions };
+
+      router.push('/result');
+    }, 3000);
+  }, [router, router.query]);
 
   return (
     <Container bgColor="bg-primary-100">

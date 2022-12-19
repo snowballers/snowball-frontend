@@ -22,4 +22,5 @@ export type QuestionWrapperProps = {
     currentAnswers: Answer[]; 
     selectedAnswers: number[]; 
     nextQuestion: (answer: Answer) => void;
+    createPostData: () => any; // to be changed
 }

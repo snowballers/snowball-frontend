@@ -5,9 +5,10 @@ import { ProgressBar, QuestionWrapper } from './components';
 import useQuestionnaire from './useQuestionnaire';
 
 const Questionnaire: NextPage = () => {
-  const { disabled, finished, question, currentQuestion, currentAnswers, selectedAnswers, totalQuestions, prevQuestion, nextQuestion } = useQuestionnaire();
+  const { disabled, finished, question, currentQuestion, currentAnswers, selectedAnswers, totalQuestions, prevQuestion, nextQuestion, createPostData } =
+    useQuestionnaire();
   const progressBarProps = { finished, question, totalQuestions };
-  const questionWrapperProps = { finished, question, currentQuestion, currentAnswers, selectedAnswers, nextQuestion };
+  const questionWrapperProps = { finished, question, currentQuestion, currentAnswers, selectedAnswers, nextQuestion, createPostData };
   return (
     <Container bgColor="bg-primary-100">
       <div className="relative">
