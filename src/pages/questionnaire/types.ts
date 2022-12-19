@@ -10,6 +10,7 @@ export type Answer = {
 }
 
 export type ProgressBarProps = {
+    finished: boolean;
     question: number;
     totalQuestions: number;
 }
