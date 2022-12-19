@@ -1,9 +1,17 @@
+import { useRouter } from 'next/router';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 
 import Container from '@components/Container';
+import { useEffect } from 'react';
 
 const Loading: NextPage = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    setTimeout(() => router.push('/result'), 3000);
+  });
+
   return (
     <Container bgColor="bg-primary-100">
       <Image src="/roll-full.gif" alt="roll" fill objectFit="cover" />
