@@ -2,7 +2,7 @@ type Props = {
   position: string;
   direction: 'flex-row' | 'flex-col' | 'flex-row-reverse' | 'flex-col-reverse';
   children: React.ReactNode;
-  className: string;
+  className?: string;
 };
 
 function FlexBox(props: Props) {
