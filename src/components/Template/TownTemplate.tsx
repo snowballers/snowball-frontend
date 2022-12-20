@@ -1,8 +1,10 @@
+import { useRouter } from 'next/router';
 import Container from '@components/Container';
 import BaseImage from '@components/BaseImage';
 import FlexBox from '@components/FlexBox';
 import Arrow from '@components/icons/Arrow';
 import TownTitleBox from '@components/Town/TownTitleBox';
+import Gear from '@components/icons/Gear';
 
 type Props = {
   isMe?: boolean;
@@ -10,11 +12,20 @@ type Props = {
 
 const TownTemplate = (props: Props) => {
   const { isMe } = props;
+
+  const router = useRouter();
+
+  function onClick() {
+    router.push('/setting');
+  }
+
   return (
     <>
       <Container className="absolute z-0">
         <BaseImage src="/image/hometown.png" alt="마을 배경 이미지" fill />
       </Container>
+
+      {isMe ? <Gear className="absolute z-20 top-4 right-4" fill="#e8eff6" onClick={onClick} /> : ''}
 
       <TownTitleBox isMe={isMe} />
 
