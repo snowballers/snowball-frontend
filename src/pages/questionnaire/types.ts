@@ -10,6 +10,7 @@ export type Answer = {
 }
 
 export type ProgressBarProps = {
+    finished: boolean;
     question: number;
     totalQuestions: number;
 }
@@ -21,4 +22,5 @@ export type QuestionWrapperProps = {
     currentAnswers: Answer[]; 
     selectedAnswers: number[]; 
     nextQuestion: (answer: Answer) => void;
+    createPostData: () => any; // to be changed
 }

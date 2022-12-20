@@ -29,5 +29,12 @@ export default function useQuestionnaire() {
         question === totalQuestions ? setFinished(true) : setQuestion((prev) => prev + 1);
     }
 
-    return { totalQuestions, disabled, finished, question, currentQuestion, currentAnswers, selectedAnswers, prevQuestion, nextQuestion }
+    function createPostData() {
+        return {
+            totalQuestion: totalQuestions,
+            questions: JSON.stringify(selectedAnswers.slice(1).map((a, i) => ({ id: i + 1, answerId: a})))
+        };
+    }
+
+    return { totalQuestions, disabled, finished, question, currentQuestion, currentAnswers, selectedAnswers, prevQuestion, nextQuestion, createPostData }
 }
