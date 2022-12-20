@@ -8,8 +8,13 @@ const TITLE_MOCK = "동용's 눈사람 마을";
 const SNOWMAN_NUM_MOCK = 7;
 const SNOWMAN_NUM_TEXT = '명의 눈사람이 살고 있어요';
 
-const TownTitleBox = () => {
+type Props = {
+  isMe?: boolean;
+};
+
+const TownTitleBox = (props: Props) => {
   const snowmanText = SNOWMAN_NUM_MOCK + SNOWMAN_NUM_TEXT;
+  const { isMe } = props;
   const [isEdit, setEdit] = useState(false);
 
   return (
@@ -24,7 +29,7 @@ const TownTitleBox = () => {
         ) : (
           <Title text={TITLE_MOCK} className="text-primary-50 text-3xl pr-[13px]" />
         )}
-        <Pencil onClick={() => setEdit((prev) => !prev)} fill={isEdit ? '#55b8ff' : undefined} />
+        {isMe && <Pencil onClick={() => setEdit((prev) => !prev)} fill={isEdit ? '#55b8ff' : undefined} />}
       </FlexBox>
       <Span text={snowmanText} className="text-[20px] text-primary-450" />
     </FlexBox>
