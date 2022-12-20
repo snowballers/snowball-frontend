@@ -23,8 +23,9 @@ const TownTemplate = (props: Props) => {
     <>
       <Container className="absolute z-0">
         <BaseImage src="/image/hometown.png" alt="마을 배경 이미지" fill />
-        {isMe ? <Gear className="absolute z-20 top-4 right-4" fill="#e8eff6" onClick={onClick} /> : ''}
       </Container>
+
+      {isMe ? <Gear className="absolute z-20 top-4 right-4" fill="#e8eff6" onClick={onClick} /> : ''}
 
       <TownTitleBox isMe={isMe} />
 
