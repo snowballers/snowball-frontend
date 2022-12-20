@@ -2,8 +2,8 @@ import toast from 'react-hot-toast';
 
 type Props = {
   message: string;
-  className: string;
-  style: React.CSSProperties;
+  className?: string;
+  style?: React.CSSProperties;
 };
 
 export const toastSuccess = ({ message, style }: Props) => {
