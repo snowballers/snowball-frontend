@@ -1,12 +1,13 @@
 import React from 'react';
 
 type Props = {
-  bgColor: string;
   children: React.ReactNode;
+  bgColor?: string;
+  className?: string;
 };
 
-const Container = ({ bgColor, children }: Props) => {
-  return <div className={`container ${bgColor} min-h-screen w-full sm:w-6/12`}>{children}</div>;
+const Container = ({ bgColor, children, className }: Props) => {
+  return <div className={`container ${bgColor} min-h-screen w-full sm:w-6/12 ${className}`}>{children}</div>;
 };
 
 export default Container;
