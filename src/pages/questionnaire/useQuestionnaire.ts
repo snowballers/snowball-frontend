@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 import { sampleQuestions, sampleAnswers } from './components/SampleQuestion';
 import { Answer } from './types';
 
 
 export default function useQuestionnaire() {
+    const router = useRouter();
     const totalQuestions = 2;
+    const sender = router.query.sender;
+
     const [finished, setFinished] = useState<boolean>(false);
     const [disabled, setDisabled] = useState<boolean>(false);
     const [question, setQuestion] = useState<number>(1);
@@ -31,6 +35,7 @@ export default function useQuestionnaire() {
 
     function createPostData() {
         return {
+            sender: sender,
             totalQuestion: totalQuestions,
             questions: JSON.stringify(selectedAnswers.slice(1).map((a, i) => ({ id: i + 1, answerId: a})))
         };
