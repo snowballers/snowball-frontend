@@ -23,11 +23,8 @@
     "next": "13.0.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-<<<<<<< HEAD
     "react-intersection-observer": "^9.4.1",
-=======
     "react-hot-toast": "^2.4.0",
->>>>>>> 6593e5fe85fbf8dbe3976e50ff9e6515b1116159
     "sass": "^1.56.2",
     "typescript": "4.9.3"
   },
