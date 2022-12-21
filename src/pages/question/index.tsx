@@ -7,7 +7,10 @@ import Loading from './components/Loading';
 
 const Question: NextPage = () => {
   const {
-    loading,
+    QUESTION_LOADING_TEXT,
+    questionLoading,
+    SNOWMAN_LOADING_TEXT,
+    snowmanLoading,
     disabled,
     finished,
     questionNo,
@@ -22,9 +25,15 @@ const Question: NextPage = () => {
   const progressBarProps = { finished, questionNo, totalQuestions };
   const questionWrapperProps = { finished, questionNo, currentQuestion, currentAnswers, selectedAnswers, nextQuestion, finishSnowman };
 
-  return loading ? (
-    <Loading />
-  ) : (
+  if (snowmanLoading) {
+    return <Loading type="snowman" text={SNOWMAN_LOADING_TEXT} />;
+  }
+
+  if (questionLoading) {
+    return <Loading type="question" text={QUESTION_LOADING_TEXT} />;
+  }
+
+  return (
     <Container bgColor="bg-primary-100">
       <div className="relative">
         <button

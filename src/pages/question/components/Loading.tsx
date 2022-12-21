@@ -1,25 +1,31 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import type { NextPage } from 'next';
 import Image from 'next/image';
 
 import Container from '@components/Container';
 
-const Loading: NextPage = () => {
+type Props = {
+  type: string;
+  text: string;
+};
+
+const Loading = ({ type, text }: Props) => {
   const router = useRouter();
 
   useEffect(() => {
-    setTimeout(() => {
-      router.push('/result');
-    }, 3000);
-  }, [router]);
+    if (type === 'snowman') {
+      setTimeout(() => {
+        router.push('/result');
+      }, 3000);
+    }
+  }, [type, router]);
 
   return (
     <Container bgColor="bg-primary-100">
       <Image src="/roll-full.gif" alt="roll" fill objectFit="cover" />
 
       <div className="pt-8">
-        <p className="absolute inset-x-0 bottom-52 text-2xl text-center text-primary-600">눈사람을 완성하는 중입니다...</p>
+        <p className="absolute inset-x-0 bottom-52 text-2xl text-center text-primary-600">{text}</p>
       </div>
     </Container>
   );
