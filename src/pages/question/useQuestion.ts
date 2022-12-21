@@ -9,8 +9,9 @@ export default function useQuestionnaire() {
     const QUESTION_LOADING_TEXT = "질문을 불러오는 중입니다...";
     const SNOWMAN_LOADING_TEXT = "눈사람을 완성하는 중입니다...";
     const router = useRouter();
-    const sender = router.query.sender;
 
+    const [sender, setSender] = useState<string>('');
+    const [isSender, setIsSender] = useState<boolean>(false);
     const [questionLoading, setQuestionLoading] = useState<boolean>(false);
     const [snowmanLoading, setSnowmanLoading] = useState<boolean>(false);
     const [finished, setFinished] = useState<boolean>(false);
@@ -65,5 +66,5 @@ export default function useQuestionnaire() {
         // POST
     }
 
-    return { QUESTION_LOADING_TEXT, questionLoading, SNOWMAN_LOADING_TEXT, snowmanLoading, totalQuestions, disabled, finished, questionNo, currentQuestion, currentAnswers, selectedAnswers, prevQuestion, nextQuestion, finishSnowman }
+    return { setSender, isSender, setIsSender, QUESTION_LOADING_TEXT, questionLoading, SNOWMAN_LOADING_TEXT, snowmanLoading, totalQuestions, disabled, finished, questionNo, currentQuestion, currentAnswers, selectedAnswers, prevQuestion, nextQuestion, finishSnowman }
 }

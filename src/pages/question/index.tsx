@@ -1,12 +1,14 @@
 import type { NextPage } from 'next';
 
 import Container from '@components/Container';
-import { ProgressBar, QuestionWrapper } from './components';
+import { ProgressBar, QuestionWrapper, Loading, SenderWrapper } from './components';
 import useQuestionnaire from './useQuestion';
-import Loading from './components/Loading';
 
 const Question: NextPage = () => {
   const {
+    setSender,
+    isSender,
+    setIsSender,
     QUESTION_LOADING_TEXT,
     questionLoading,
     SNOWMAN_LOADING_TEXT,
@@ -24,6 +26,10 @@ const Question: NextPage = () => {
   } = useQuestionnaire();
   const progressBarProps = { finished, questionNo, totalQuestions };
   const questionWrapperProps = { finished, questionNo, currentQuestion, currentAnswers, selectedAnswers, nextQuestion, finishSnowman };
+
+  if (!isSender) {
+    return <SenderWrapper setSender={setSender} setIsSender={setIsSender} />;
+  }
 
   if (snowmanLoading) {
     return <Loading type="snowman" text={SNOWMAN_LOADING_TEXT} />;
