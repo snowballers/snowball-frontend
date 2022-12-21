@@ -7,7 +7,7 @@ type Props = {
 function Pencil(props: Props) {
   const { fill, className, onClick } = props;
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} onClick={onClick}>
+    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" className={className} onClick={onClick}>
       <path
         d="M20.291 0C21.2517 0 22.1732 0.38126 22.853 1.06006C23.5315 1.73987 23.9126 2.6611 23.9126 3.62156C23.9126 4.58203 23.5315 5.50326 22.853 6.18306L19.5479 9.48815L14.2891 4.5L17.729 1.06006C18.4089 0.38126 19.3303 0 20.291 0Z"
         fill={fill || '#D9D9D9'}
