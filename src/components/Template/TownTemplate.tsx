@@ -5,7 +5,7 @@ import Arrow from '@components/icons/Arrow';
 import TownTitleBox from '@components/Town/TownTitleBox';
 import CameraBtn from '@components/Town/CameraBtn';
 import ShareBtn from '@components/Town/ShareBtn';
-import {  getCurrentUrl,  sharePage } from 'src/utils/share';
+import { useRef } from 'react';
 
 type Props = {
   title: string;
@@ -15,15 +15,10 @@ type Props = {
 const TownTemplate = (props: Props) => {
   const { title, isMe } = props;
   const direction = isMe ? 'flex-row' : 'flex-col';
-
-  const currentUrl = getCurrentUrl();
-  const handleShare = sharePage({
-    title: `snowballers | ${title}`,
-    url: currentUrl,
-  });
+  const pageRef = useRef<HTMLDivElement>(null);
 
   return (
-    <>
+    <Container ref={pageRef}>
       <Container className="absolute z-0">
         <BaseImage src="/image/hometown.png" alt="마을 배경 이미지" fill />
       </Container>
@@ -36,10 +31,10 @@ const TownTemplate = (props: Props) => {
       </FlexBox>
 
       <FlexBox position="fixed" direction={direction} className="w-full sm:w-6/12 bottom-[50px] pr-[21px] pl-[21px]">
-        <CameraBtn />
-        <ShareBtn onClick={handleShare}/>
+        <CameraBtn pageRef={pageRef}/>
+        <ShareBtn title={title} />
       </FlexBox>
-    </>
+    </Container>
   );
 };
 
