@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {  LegacyRef,  forwardRef } from 'react';
 
 type Props = {
   children: React.ReactNode;
@@ -6,8 +6,12 @@ type Props = {
   className?: string;
 };
 
-const Container = ({ bgColor, children, className }: Props) => {
-  return <div className={`container ${bgColor} min-h-screen w-full sm:w-6/12 ${className}`}>{children}</div>;
+const Container = ({ bgColor, children, className }: Props, ref: LegacyRef<HTMLDivElement> | null) => {
+  return (
+    <div ref={ref} className={`container ${bgColor} min-h-screen w-full sm:w-6/12 ${className}`}>
+      {children}
+    </div>
+  );
 };
 
-export default Container;
+export default forwardRef(Container);
