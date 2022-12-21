@@ -2,15 +2,29 @@ import type { NextPage } from 'next';
 
 import Container from '@components/Container';
 import { ProgressBar, QuestionWrapper } from './components';
-import useQuestionnaire from './useQuestionnaire';
+import useQuestionnaire from './useQuestion';
+import Loading from './components/Loading';
 
-const Questionnaire: NextPage = () => {
-  const { disabled, finished, question, currentQuestion, currentAnswers, selectedAnswers, totalQuestions, prevQuestion, nextQuestion, createPostData } =
-    useQuestionnaire();
-  const progressBarProps = { finished, question, totalQuestions };
-  const questionWrapperProps = { finished, question, currentQuestion, currentAnswers, selectedAnswers, nextQuestion, createPostData };
+const Question: NextPage = () => {
+  const {
+    loading,
+    disabled,
+    finished,
+    questionNo,
+    currentQuestion,
+    currentAnswers,
+    selectedAnswers,
+    totalQuestions,
+    prevQuestion,
+    nextQuestion,
+    finishSnowman,
+  } = useQuestionnaire();
+  const progressBarProps = { finished, questionNo, totalQuestions };
+  const questionWrapperProps = { finished, questionNo, currentQuestion, currentAnswers, selectedAnswers, nextQuestion, finishSnowman };
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <Container bgColor="bg-primary-100">
       <div className="relative">
         <button
@@ -33,4 +47,4 @@ const Questionnaire: NextPage = () => {
   );
 };
 
-export default Questionnaire;
+export default Question;

@@ -3,7 +3,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { ProgressBarProps } from '../types';
 
-const ProgressBar = ({ finished, question, totalQuestions }: ProgressBarProps) => {
+const ProgressBar = ({ finished, questionNo, totalQuestions }: ProgressBarProps) => {
   const [percentage, setPercentage] = useState<string>();
   const [left, setLeft] = useState<number>();
 
@@ -25,12 +25,12 @@ const ProgressBar = ({ finished, question, totalQuestions }: ProgressBarProps) =
   }, []);
 
   useEffect(() => {
-    const getPercentage = (question: number, totalQuestions: number): number => {
-      return Math.floor(((finished ? question : question - 1) / totalQuestions) * 100);
+    const getPercentage = (questionNo: number, totalQuestions: number): number => {
+      return Math.floor(((finished ? questionNo : questionNo - 1) / totalQuestions) * 100);
     };
 
-    setPercentage(`${getPercentage(question, totalQuestions)}%`);
-  }, [question, totalQuestions, finished]);
+    setPercentage(`${getPercentage(questionNo, totalQuestions)}%`);
+  }, [questionNo, totalQuestions, finished]);
 
   useEffect(() => {
     handleResize();

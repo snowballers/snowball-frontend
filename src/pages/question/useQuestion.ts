@@ -10,27 +10,28 @@ export default function useQuestionnaire() {
     const totalQuestions = 2;
     const sender = router.query.sender;
 
+    const [loading, setLoading] = useState<boolean>(false);
     const [finished, setFinished] = useState<boolean>(false);
     const [disabled, setDisabled] = useState<boolean>(false);
-    const [question, setQuestion] = useState<number>(1);
+    const [questionNo, setQuestionNo] = useState<number>(1);
     const [currentQuestion, setCurrentQuestion] = useState<string>('');
     const [currentAnswers, setCurrentAnswers] = useState<Answer[]>([]);
     const [selectedAnswers, setSelectedAnswers] = useState<number[]>(Array(totalQuestions).fill(-1));
 
     useEffect(() => {
-        setDisabled(question === 1 ? true : false);
-        setCurrentQuestion(sampleQuestions.filter((q) => q.id === question)[0].content);
-        setCurrentAnswers(sampleAnswers.filter((a) => a.question_id === question));
-    }, [question]);
+        setDisabled(questionNo === 1 ? true : false);
+        setCurrentQuestion(sampleQuestions.filter((q) => q.id === questionNo)[0].content);
+        setCurrentAnswers(sampleAnswers.filter((a) => a.question_id === questionNo));
+    }, [questionNo]);
 
 
     function prevQuestion() {
-        finished ? setFinished(false) : setQuestion((prev) => (prev === 1 ? prev : prev - 1));
+        finished ? setFinished(false) : setQuestionNo((prev) => (prev === 1 ? prev : prev - 1));
     }
 
     function nextQuestion(answer: Answer) {
-        setSelectedAnswers((prev) => [...prev.slice(0, question), answer.id, ...prev.slice(question + 1)]);
-        question === totalQuestions ? setFinished(true) : setQuestion((prev) => prev + 1);
+        setSelectedAnswers((prev) => [...prev.slice(0, questionNo), answer.id, ...prev.slice(questionNo + 1)]);
+        questionNo === totalQuestions ? setFinished(true) : setQuestionNo((prev) => prev + 1);
     }
 
     function createPostData() {
@@ -41,5 +42,11 @@ export default function useQuestionnaire() {
         };
     }
 
-    return { totalQuestions, disabled, finished, question, currentQuestion, currentAnswers, selectedAnswers, prevQuestion, nextQuestion, createPostData }
+    function finishSnowman() {
+        setLoading(true);
+        createPostData();
+        // POST
+    }
+
+    return { loading, totalQuestions, disabled, finished, questionNo, currentQuestion, currentAnswers, selectedAnswers, prevQuestion, nextQuestion, finishSnowman }
 }
