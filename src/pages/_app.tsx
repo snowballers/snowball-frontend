@@ -1,6 +1,7 @@
-import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import { Hydrate, QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import '../styles/globals.css';
+import type {  AppProps } from 'next/app';
+import {  Hydrate,  QueryClient,  QueryClientProvider } from '@tanstack/react-query';
+import Toast from '@components/Toast';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -16,10 +17,13 @@ export const queryClient = new QueryClient({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <Component {...pageProps} />
-      </Hydrate>
-    </QueryClientProvider>
+    <>
+      <Toast />
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Component {...pageProps} />
+        </Hydrate>
+      </QueryClientProvider>
+    </>
   );
 }
