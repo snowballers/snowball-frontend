@@ -5,7 +5,7 @@ import { ProgressBarProps } from '../types';
 
 const ProgressBar = ({ finished, questionNo, totalQuestions }: ProgressBarProps) => {
   const [percentage, setPercentage] = useState<string>();
-  const [translateVal, setTranslateval] = useState<number>();
+  const [translateVal, setTranslateval] = useState<number>(-48);
 
   const totalProgressRef = useRef<HTMLDivElement>(null);
   const currentProgressRef = useRef<HTMLDivElement>(null);
