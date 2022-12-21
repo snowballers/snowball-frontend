@@ -18,7 +18,7 @@ const TownTemplate = (props: Props) => {
   const pageRef = useRef<HTMLDivElement>(null);
 
   return (
-    <Container ref={pageRef}>
+    <div ref={pageRef} className="w-full h-[100vh]">
       <Container className="absolute z-0">
         <BaseImage src="/image/hometown.png" alt="마을 배경 이미지" fill />
       </Container>
@@ -31,10 +31,10 @@ const TownTemplate = (props: Props) => {
       </FlexBox>
 
       <FlexBox position="fixed" direction={direction} className="w-full sm:w-6/12 bottom-[50px] pr-[21px] pl-[21px]">
-        <CameraBtn pageRef={pageRef}/>
+        <CameraBtn pageRef={pageRef} />
         <ShareBtn title={title} />
       </FlexBox>
-    </Container>
+    </div>
   );
 };
 
