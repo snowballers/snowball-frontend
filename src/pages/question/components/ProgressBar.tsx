@@ -5,6 +5,7 @@ import { ProgressBarProps } from '../types';
 
 const ProgressBar = ({ finished, questionNo, totalQuestions }: ProgressBarProps) => {
   const [percentage, setPercentage] = useState<string>();
+  const [translateVal, setTranslateval] = useState<number>();
 
   const totalProgressRef = useRef<HTMLDivElement>(null);
   const currentProgressRef = useRef<HTMLDivElement>(null);
@@ -14,7 +15,13 @@ const ProgressBar = ({ finished, questionNo, totalQuestions }: ProgressBarProps)
       return Math.floor(((finished ? questionNo : questionNo - 1) / totalQuestions) * 100);
     };
 
+    const getTranslateVal = (questionNo: number, totalQuestions: number): number => {
+      if (!totalProgressRef.current) return 0;
+      return (totalProgressRef.current.clientWidth * getPercentage(questionNo, totalQuestions)) / 100 - 48;
+    };
+
     setPercentage(`${getPercentage(questionNo, totalQuestions)}%`);
+    setTranslateval(getTranslateVal(questionNo, totalQuestions));
   }, [questionNo, totalQuestions, finished]);
 
   return (
@@ -23,7 +30,7 @@ const ProgressBar = ({ finished, questionNo, totalQuestions }: ProgressBarProps)
         <div ref={currentProgressRef} className="bg-primary-600 h-2.5 rounded-full" style={{ width: percentage, transition: 'width 1s linear' }}></div>
         <Image
           className="absolute -top-[24px]"
-          style={{ left: `calc(${percentage} - 48px)`, transition: '1s linear' }}
+          style={{ transform: `translateX(${translateVal}px)`, transition: '1s linear' }}
           src="/roll-cropped.gif"
           alt="roll"
           width="64"
