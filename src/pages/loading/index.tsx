@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 
 import Container from '@components/Container';
-import { useEffect } from 'react';
 
 const Loading: NextPage = () => {
   const router = useRouter();
@@ -15,7 +15,6 @@ const Loading: NextPage = () => {
 
       const questions = JSON.parse(router.query.questions);
       router.query = { ...router.query, questions: questions };
-
       router.push('/result');
     }, 3000);
   }, [router, router.query]);
