@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import Container from '@components/Container';
 import BaseImage from '@components/BaseImage';
 import FlexBox from '@components/FlexBox';
 import Arrow from '@components/icons/Arrow';
