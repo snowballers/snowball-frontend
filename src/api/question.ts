@@ -1,7 +1,14 @@
-import { API_BASE_URL } from './index';
 import axios from 'axios';
 
-export async function getQuestion() {
-  const response = await axios.get(`${API_BASE_URL}/question`);
+import { API_BASE_URL } from './index';
+import { IQuestionPostRequest } from './types';
+
+export async function getQuestion(url: string) {
+  const response = await axios.get(`${API_BASE_URL}/${url}/question`);
+  return response;
+}
+
+export async function createSnowman(url: string, data: IQuestionPostRequest) {
+  const response = await axios.post(`${API_BASE_URL}/${url}/question`, data);
   return response;
 }
