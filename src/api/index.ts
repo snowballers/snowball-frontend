@@ -1,11 +1,11 @@
-import { getQuestion } from "./question";
-import { getSnowman, createSnowman } from "./snowman";
-import { getTown, changeTownName } from "./town";
+import { getQuestion, createSnowman } from "./question";
+import { getSnowman } from "./snowman";
+import { getTown, updateTownName } from "./town";
 import { createLetter } from "./letter";
 
 export const API_BASE_URL = '';
 
-export { getQuestion };
-export { getSnowman, createSnowman };
-export { getTown, changeTownName };
+export { getQuestion, createSnowman };
+export { getSnowman };
+export { getTown, updateTownName };
 export { createLetter };

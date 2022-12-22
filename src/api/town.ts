@@ -7,7 +7,7 @@ export async function getTown(url: string) {
   return response;
 }
 
-export async function changeTownName(url: string, townName: string) {
+export async function updateTownName(url: string, townName: string) {
     const response = await axios.patch(`${API_BASE_URL}/${url}/town/name`, {townName});
     return response;
 }
