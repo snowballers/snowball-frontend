@@ -1,9 +1,8 @@
-import { useRouter } from 'next/router';
 import Button from '@components/Button';
+
 import { QuestionWrapperProps } from '../types';
 
-const QuestionWrapper = ({ finished, question, currentQuestion, currentAnswers, selectedAnswers, nextQuestion, createPostData }: QuestionWrapperProps) => {
-  const router = useRouter();
+const QuestionWrapper = ({ finished, questionNo, currentQuestion, currentAnswers, selectedAnswers, nextQuestion, finishSnowman }: QuestionWrapperProps) => {
   return (
     <>
       {finished ? (
@@ -12,14 +11,7 @@ const QuestionWrapper = ({ finished, question, currentQuestion, currentAnswers, 
             <h1 className="text-xl text-center text-primary-600">모든 질문에 답변을 완료했어요!</h1>
           </div>
           <div className="h-20 flex justify-center">
-            <Button
-              width="w-4/5"
-              text="눈사람 완성하기"
-              selected={true}
-              onClick={() => {
-                router.push({ pathname: '/loading', query: createPostData() }, '/loading');
-              }}
-            />
+            <Button width="w-4/5" text="눈사람 완성하기" selected={true} onClick={finishSnowman} />
           </div>
         </>
       ) : (
@@ -33,7 +25,7 @@ const QuestionWrapper = ({ finished, question, currentQuestion, currentAnswers, 
                 <Button
                   width="w-4/5"
                   text={a.content}
-                  selected={selectedAnswers[question] === a.id}
+                  selected={selectedAnswers[questionNo] === a.id}
                   onClick={() => {
                     nextQuestion(a);
                   }}
