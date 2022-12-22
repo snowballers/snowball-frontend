@@ -1,13 +1,11 @@
-import axios from 'axios';
-
-import { API_BASE_URL } from './index';
+import { api } from './index';
 
 export async function readTown(url: string) {
-  const response = await axios.get(`${API_BASE_URL}/${url}/town`);
+  const response = await api.get(`/${url}/town`);
   return response;
 }
 
 export async function updateTownName(url: string, townName: string) {
-    const response = await axios.patch(`${API_BASE_URL}/${url}/town/name`, {townName});
+    const response = await api.patch(`/${url}/town/name`, {townName});
     return response;
 }

@@ -1,8 +1,6 @@
-import axios from 'axios';
-
-import { API_BASE_URL } from './index';
+import { api } from './index';
 
 export async function readSnowman(id: number) {
-  const response = await axios.get(`${API_BASE_URL}/snowman/${id}`);
+  const response = await api.get(`/snowman/${id}`);
   return response;
 }
