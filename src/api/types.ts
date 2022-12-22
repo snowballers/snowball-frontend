@@ -72,6 +72,7 @@ export interface IQuestionGetResponse extends DefaultResponse {
 }
 
 export interface IQuestionPostRequest {
+  sender: string;
   totalQuestion: number;
   questions: QuestionAnswerPair[];
 }
@@ -82,8 +83,7 @@ export interface IQuestionPostResponse extends DefaultResponse {
 
 export interface ILetterPostRequest {
   snowmanId: number;
-  sender: string;
-  letter?: string;
+  letter: string;
 }
 
 export interface ILetterPostResponse extends DefaultResponse {}
