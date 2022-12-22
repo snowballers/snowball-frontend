@@ -3,7 +3,7 @@ import axios from 'axios';
 import { API_BASE_URL } from './index';
 import { IQuestionPostRequest } from './types';
 
-export async function getQuestion(url: string) {
+export async function readQuestion(url: string) {
   const response = await axios.get(`${API_BASE_URL}/${url}/question`);
   return response;
 }

@@ -1,17 +1,11 @@
 import { useQuery, useMutation } from '@tanstack/react-query';
 
-import { getTown, updateTownName } from '@api/town';
+import { readTown, updateTownName } from '@api/town';
 
-export function useTown(url: string) {
-  const { data, isLoading, error } = useQuery(['town', url], () => getTown(url));
-  const { data: update, isLoading: isUpdating, error: updateError } = useMutation((townName: string) => updateTownName(url, townName));
+export function useReadTown(url: string) {
+  return useQuery(['town', url], () => readTown(url));
+}
 
-  return {
-    data,
-    isLoading,
-    error,
-    update,
-    isUpdating,
-    updateError
-  };
+export function useUpdateTown(url: string) {
+  return useMutation((townName: string) => updateTownName(url, townName));
 }
