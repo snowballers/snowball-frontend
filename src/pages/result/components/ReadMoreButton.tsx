@@ -17,7 +17,7 @@ const ReadMoreButton = (props: Props) => {
       onClick={onClick}
     >
       <div className="flex place-content-center inset-x-0 pt-12 pb-4">
-        <p className="text-center text-gray-600 text-2xl mr-1">자세히 보기</p>
+        <p className="text-center text-gray-600 text-2xl mr-1">친구에게 편지 쓰기</p>
         <ChevronDown fill="rgb(75, 85, 99)" />
       </div>
     </div>
