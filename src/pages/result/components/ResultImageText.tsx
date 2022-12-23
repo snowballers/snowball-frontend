@@ -20,7 +20,7 @@ const ResultImageText = () => {
       <Title text={`짠! ${sampleResponse.data.nickname}님을 위한`} className="text-center pt-20 text-primary-50 text-2xl inset-x-0" />
       <Title text={`눈사람이 완성되었어요!`} className="text-center text-primary-50 text-2xl inset-x-0" />
       <div className="inset-x-0">
-        <Image className="mx-auto" src="/enfp.png" alt="" width={350} height={350} />
+        <Image className="mx-auto" src="/snowman/enfp.png" alt="" width={350} height={350} />
       </div>
       <p className="text-center text-xl">
         {sender}님이 만든 눈사람은
