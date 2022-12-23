@@ -9,25 +9,23 @@ import Gear from '@components/icons/Gear';
 import SnowmanList from '@components/SnowmanList';
 import Snowflake from '@components/Snowflake';
 import { snowmanlist } from '__mocks__/snowmanlist';
+import TownFooterBtn from '@components/Town/TownFooterBtn';
 
 type Props = {
   title: string;
-  isMine?: boolean;
 };
 
 const TITLE_MOCK = "동용's 눈사람 마을";
 const SNOWMAN_NUM_MOCK = 7;
 
 const TownTemplate = (props: Props) => {
-  const { title, isMine } = props;
+  const { title } = props;
+  const isMine = false;
   const direction = isMine ? 'flex-row' : 'flex-col';
   const pageRef = useRef<HTMLDivElement>(null);
-
   const router = useRouter();
 
-  function onClick() {
-    router.push('/setting');
-  }
+  const onClick = () => router.push('/setting');
 
   return (
     <div ref={pageRef} className="relative w-full h-[100vh]">
@@ -46,14 +44,7 @@ const TownTemplate = (props: Props) => {
           <ShareBtn title={title} />
         </FlexBox>
       ) : (
-        <FlexBox position="fixed" direction={direction} className="z-20 w-full sm:w-6/12 bottom-[50px] pr-[21px] pl-[21px]">
-          <button type="button" className="bg-primary-350 h-[50px] rounded-[20px] text-[22px] text-[#fff]">
-            눈사람 만들어주기
-          </button>
-          <button type="button" className="h-[50px] text-[22px] text-primary-350">
-            내 눈사람 마을 만들기
-          </button>
-        </FlexBox>
+        <TownFooterBtn direction={direction} />
       )}
     </div>
   );

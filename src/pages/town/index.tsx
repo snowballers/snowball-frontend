@@ -6,7 +6,7 @@ import Container from '@components/Container';
 const Town: NextPage = () => {
   return (
     <Container>
-      <TownTemplate isMe title="내 마을보기" />
+      <TownTemplate title="눈사람 마을보기" />
     </Container>
   );
 };
