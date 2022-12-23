@@ -2,12 +2,12 @@ import Snowman from './Snowman';
 import FlexBox from './FlexBox';
 import Arrow from './icons/Arrow';
 import { useState } from 'react';
-import { snowman } from 'src/types/town';
+import { TownSnowman } from '@api/types';
 
 const count = 7;
 
 type Props = {
-  snowmans: snowman[];
+  snowmans: TownSnowman[];
 };
 
 function SnowmanList(props: Props) {

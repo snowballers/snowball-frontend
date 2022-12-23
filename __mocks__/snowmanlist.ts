@@ -1,6 +1,6 @@
-import { snowman } from 'src/types/town';
+import { TownSnowman } from '@api/types';
 
-export const snowmanlist: snowman[] = [
+export const snowmanlist: TownSnowman[] = [
   {
     id: 1,
     type: 'ENFJ',

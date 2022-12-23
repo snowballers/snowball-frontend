@@ -15,5 +15,3 @@ export type MBTI =
   | 'ISFP'
   | 'ISTJ'
   | 'ISTP';
-
-export type snowman = { id: number; type: MBTI; seen: boolean };
