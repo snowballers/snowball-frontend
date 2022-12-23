@@ -1,3 +1,5 @@
+import { MBTI } from 'src/types/town';
+
 interface QuestionAnswerPair {
   id: number;
   answerId: number;
@@ -10,9 +12,9 @@ interface Snowman {
   description: string;
 }
 
-interface TownSnowman {
+export interface TownSnowman {
   id: number;
-  imageUrl: string;
+  type: MBTI;
   seen: boolean;
 }
 

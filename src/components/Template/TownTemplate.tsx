@@ -8,22 +8,24 @@ import { useRef } from 'react';
 import Gear from '@components/icons/Gear';
 import SnowmanList from '@components/SnowmanList';
 import Snowflake from '@components/Snowflake';
+import { snowmanlist } from '__mocks__/snowmanlist';
+import TownFooterBtn from '@components/Town/TownFooterBtn';
 
 type Props = {
   title: string;
-  isMe?: boolean;
 };
 
-const TownTemplate = (props: Props) => {
-  const { title, isMe } = props;
-  const direction = isMe ? 'flex-row' : 'flex-col';
-  const pageRef = useRef<HTMLDivElement>(null);
+const TITLE_MOCK = "동용's 눈사람 마을";
+const SNOWMAN_NUM_MOCK = 7;
 
+const TownTemplate = (props: Props) => {
+  const { title } = props;
+  const isMine = false;
+  const direction = isMine ? 'flex-row' : 'flex-col';
+  const pageRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  function onClick() {
-    router.push('/setting');
-  }
+  const onClick = () => router.push('/setting');
 
   return (
     <div ref={pageRef} className="relative w-full h-[100vh]">
@@ -32,16 +34,18 @@ const TownTemplate = (props: Props) => {
         <BaseImage src="/image/hometown.png" alt="마을 배경 이미지" fill />
       </div>
 
-      {isMe ? <Gear className="absolute z-20 top-4 right-4" fill="#e8eff6" onClick={onClick} /> : ''}
+      {isMine ? <Gear className="absolute z-20 top-4 right-4" fill="#e8eff6" onClick={onClick} /> : ''}
+      <TownTitleBox isMine={isMine} totalSnowman={SNOWMAN_NUM_MOCK} townName={TITLE_MOCK} />
+      <SnowmanList snowmans={snowmanlist} />
 
-      <TownTitleBox isMe={isMe} />
-
-      <SnowmanList />
-
-      <FlexBox position="fixed" direction={direction} className="z-20 w-full sm:w-6/12 bottom-[50px] pr-[21px] pl-[21px]">
-        <CameraBtn pageRef={pageRef} />
-        <ShareBtn title={title} />
-      </FlexBox>
+      {isMine ? (
+        <FlexBox position="fixed" direction={direction} className="z-20 w-full sm:w-6/12 bottom-[50px] pr-[21px] pl-[21px]">
+          <CameraBtn pageRef={pageRef} />
+          <ShareBtn title={title} />
+        </FlexBox>
+      ) : (
+        <TownFooterBtn direction={direction} />
+      )}
     </div>
   );
 };

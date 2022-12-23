@@ -1,15 +1,20 @@
-import { snowmanlist } from '__mocks__/snowmanlist';
 import Snowman from './Snowman';
 import FlexBox from './FlexBox';
 import Arrow from './icons/Arrow';
 import { useState } from 'react';
+import { TownSnowman } from '@api/types';
 
 const count = 7;
 
-function SnowmanList() {
+type Props = {
+  snowmans: TownSnowman[];
+};
+
+function SnowmanList(props: Props) {
+  const { snowmans } = props;
   const [pageNum, setPageNum] = useState(1);
-  const maxPageNum = Math.ceil(snowmanlist.length / count);
-  const datas = snowmanlist.slice((pageNum - 1) * count, pageNum * count) || [];
+  const maxPageNum = Math.ceil(snowmans.length / count);
+  const datas = snowmans.slice((pageNum - 1) * count, pageNum * count) || [];
 
   const nextPage = () => {
     if (maxPageNum <= pageNum) return;
@@ -30,7 +35,7 @@ function SnowmanList() {
       <FlexBox
         position="absolute"
         direction="flex-col"
-        className="top-[50%] -translate-y-[30%] left-[50%] -translate-x-[50%] w-[calc(100%_-_115.32px)] h-[calc(100%_-_360px)] max-h-[1200px]"
+        className="top-[50%] -translate-y-[30%] left-[50%] -translate-x-[50%] w-[calc(100%_-_115.32px)] h-[calc(100%_-_470px)] max-h-[1200px]"
       >
         <FlexBox position="relative" direction="flex-row" className="justify-center h-full">
           {datas.slice(0, 2).map(({ id, type, seen }) => (
