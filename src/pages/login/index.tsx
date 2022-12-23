@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 
 import Container from '@components/Container';
 import Snowflake from '@components/Snowflake';
-import LoginIcon from './components/LoginIcon';
+import LoginIcon from '@components/Login/LoginIcon';
 import BaseImage from '@components/BaseImage';
 
 const Login: NextPage = () => {

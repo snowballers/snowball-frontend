@@ -20,6 +20,11 @@ module.exports = {
     container: {
       center: true,
     },
+    extend: {
+      backgroundImage: {
+        'letter-background': "url('/image/letter_background.png')",
+      },
+    },
   },
   plugins: [require('flowbite/plugin')],
 };

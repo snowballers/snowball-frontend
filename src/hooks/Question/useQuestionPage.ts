@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-import { sampleQuestions, sampleAnswers } from './components/SampleQuestion';
-import { Question, Answer } from './types';
+import { sampleQuestions, sampleAnswers } from '@components/Question/SampleQuestion';
+import { Question, Answer } from '../../types/Question/types';
 
-
-export default function useQuestionnaire() {
+export default function useQuestionPage() {
     const QUESTION_LOADING_TEXT = "질문을 불러오는 중입니다...";
     const SNOWMAN_LOADING_TEXT = "눈사람을 완성하는 중입니다...";
     const router = useRouter();

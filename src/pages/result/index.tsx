@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 
 import Container from '@components/Container';
-import ResultImageText from './components/ResultImageText';
-import ReadMoreButton from './components/ReadMoreButton';
+import ResultImageText from '@components/Result/ResultImageText';
+import ReadMoreButton from '@components/Result/ReadMoreButton';
 import { useInView } from 'react-intersection-observer';
 import { useState, useRef, useEffect } from 'react';
 
