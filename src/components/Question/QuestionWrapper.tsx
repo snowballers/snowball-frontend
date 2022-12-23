@@ -1,6 +1,6 @@
 import Button from '@components/Button';
 
-import { QuestionWrapperProps } from '../../../types/Question/types';
+import { QuestionWrapperProps } from 'src/types/Question/types';
 
 const QuestionWrapper = ({ finished, questionNo, currentQuestion, currentAnswers, selectedAnswers, nextQuestion, finishSnowman }: QuestionWrapperProps) => {
   return (
