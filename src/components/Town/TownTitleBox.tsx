@@ -22,7 +22,7 @@ const TownTitleBox = (props: Props) => {
       <FlexBox position="reletive" direction="flex-row" className="w-full justify-center items-center pb-[6px] pr-[50px] pl-[50px]">
         {isEdit ? (
           <input
-            placeholder="마을 이름을 입력해주세요."
+            placeholder="이름을 입력해주세요."
             className="w-[100%] text-primary-50 text-2xl pr-[13px] bg-transparent placeholder:text-xl"
             defaultValue={townName}
           />
