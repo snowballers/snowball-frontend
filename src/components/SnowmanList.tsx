@@ -30,7 +30,7 @@ function SnowmanList() {
       <FlexBox
         position="absolute"
         direction="flex-col"
-        className="top-[50%] -translate-y-[30%] left-[50%] -translate-x-[50%] w-[calc(100%_-_115.32px)] h-[calc(100%_-_360px)] max-h-[1200px]"
+        className="top-[50%] -translate-y-[30%] left-[50%] -translate-x-[50%] w-[calc(100%_-_115.32px)] h-[calc(100%_-_470px)] max-h-[1200px]"
       >
         <FlexBox position="relative" direction="flex-row" className="justify-center h-full">
           {datas.slice(0, 2).map(({ id, type, seen }) => (

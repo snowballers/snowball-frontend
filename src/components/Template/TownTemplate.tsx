@@ -11,12 +11,12 @@ import Snowflake from '@components/Snowflake';
 
 type Props = {
   title: string;
-  isMe?: boolean;
+  isMine?: boolean;
 };
 
 const TownTemplate = (props: Props) => {
-  const { title, isMe } = props;
-  const direction = isMe ? 'flex-row' : 'flex-col';
+  const { title, isMine } = props;
+  const direction = isMine ? 'flex-row' : 'flex-col';
   const pageRef = useRef<HTMLDivElement>(null);
 
   const router = useRouter();
@@ -32,16 +32,25 @@ const TownTemplate = (props: Props) => {
         <BaseImage src="/image/hometown.png" alt="마을 배경 이미지" fill />
       </div>
 
-      {isMe ? <Gear className="absolute z-20 top-4 right-4" fill="#e8eff6" onClick={onClick} /> : ''}
-
-      <TownTitleBox isMe={isMe} />
-
+      {isMine ? <Gear className="absolute z-20 top-4 right-4" fill="#e8eff6" onClick={onClick} /> : ''}
+      <TownTitleBox isMine={isMine} />
       <SnowmanList />
 
-      <FlexBox position="fixed" direction={direction} className="z-20 w-full sm:w-6/12 bottom-[50px] pr-[21px] pl-[21px]">
-        <CameraBtn pageRef={pageRef} />
-        <ShareBtn title={title} />
-      </FlexBox>
+      {isMine ? (
+        <FlexBox position="fixed" direction={direction} className="z-20 w-full sm:w-6/12 bottom-[50px] pr-[21px] pl-[21px]">
+          <CameraBtn pageRef={pageRef} />
+          <ShareBtn title={title} />
+        </FlexBox>
+      ) : (
+        <FlexBox position="fixed" direction={direction} className="z-20 w-full sm:w-6/12 bottom-[50px] pr-[21px] pl-[21px]">
+          <button type="button" className="bg-primary-350 h-[50px] rounded-[20px] text-[22px] text-[#fff]">
+            눈사람 만들어주기
+          </button>
+          <button type="button" className="h-[50px] text-[22px] text-primary-350">
+            내 눈사람 마을 만들기
+          </button>
+        </FlexBox>
+      )}
     </div>
   );
 };
