@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 
 import Container from '@components/Container';
-import { ProgressBar, QuestionWrapper, Loading, SenderWrapper } from './components';
-import useQuestionnaire from './useQuestion';
+import { ProgressBar, QuestionWrapper, Loading, SenderWrapper } from '@components/Question';
+import useQuestionnaire from '@hooks/Question/useQuestionPage';
 
 const Question: NextPage = () => {
   const {

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
-import { ProgressBarProps } from '../types';
+import { ProgressBarProps } from '../../../types/Question/types';
 
 const ProgressBar = ({ finished, questionNo, totalQuestions }: ProgressBarProps) => {
   const [percentage, setPercentage] = useState<string>();
