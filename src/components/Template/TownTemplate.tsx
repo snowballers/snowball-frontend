@@ -38,7 +38,7 @@ const TownTemplate = (props: Props) => {
 
       <SnowmanList />
 
-      <FlexBox position="fixed" direction={direction} className="w-full sm:w-6/12 bottom-[50px] pr-[21px] pl-[21px]">
+      <FlexBox position="fixed" direction={direction} className="z-20 w-full sm:w-6/12 bottom-[50px] pr-[21px] pl-[21px]">
         <CameraBtn pageRef={pageRef} />
         <ShareBtn title={title} />
       </FlexBox>

@@ -22,7 +22,7 @@ function SnowmanList() {
 
   return (
     <>
-      <FlexBox position="absolute" direction="flex-row" className="z-30 w-full top-[50%] -translate-y-[50%] justify-between">
+      <FlexBox position="absolute" direction="flex-row" className="z-20 w-full top-[50%] -translate-y-[50%] justify-between">
         <Arrow onClick={prevPage} fill="#55b8ff" className="relative w-[24px] h-[48px] left-[33.66px]" />
         <Arrow onClick={nextPage} fill="#55b8ff" className="relative w-[24px] h-[48px] rotate-180 right-[33.66px]" />
       </FlexBox>
