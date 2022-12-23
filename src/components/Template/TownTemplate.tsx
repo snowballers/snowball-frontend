@@ -15,12 +15,12 @@ type Props = {
   title: string;
 };
 
-const TITLE_MOCK = "동용's 눈사람 마을";
+const TITLE_MOCK = '동용';
 const SNOWMAN_NUM_MOCK = 7;
 
 const TownTemplate = (props: Props) => {
   const { title } = props;
-  const isMine = false;
+  const isMine = true;
   const direction = isMine ? 'flex-row' : 'flex-col';
   const pageRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
