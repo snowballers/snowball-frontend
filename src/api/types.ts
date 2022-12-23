@@ -18,19 +18,19 @@ export interface TownSnowman {
   seen: boolean;
 }
 
-interface Question {
+export interface Question {
   id: number;
   content: string;
   totalAnswers: number;
   answers: Answer[];
 }
 
-interface Answer {
+export interface Answer {
   id: number;
   content: string;
 }
 
-interface TownGetResponseData {
+export interface ITownGetResponse {
   isMine: boolean;
   nickname: string;
   townName: string;
@@ -38,39 +38,16 @@ interface TownGetResponseData {
   snowmans: TownSnowman[];
 }
 
-interface SnowmanGetResponseData {
+export interface ISnowmanGetResponse {
   senderName: string;
   letter: string;
   snowman: Snowman;
 }
 
-interface QuestionGetResponseData {
+export interface IQuestionGetResponse {
   name: string;
   totalQuestion: number;
   questions: Question[];
-}
-
-interface QuestionPostRepsonseData {
-  nickname: string;
-  percent: number;
-  snowman: Snowman;
-}
-
-interface DefaultResponse {
-  success: boolean;
-  error?: string | null;
-}
-
-export interface ITownGetResponse extends DefaultResponse {
-  data: TownGetResponseData;
-}
-
-export interface ISnowmanGetResponse extends DefaultResponse {
-  data: SnowmanGetResponseData;
-}
-
-export interface IQuestionGetResponse extends DefaultResponse {
-  data: QuestionGetResponseData;
 }
 
 export interface IQuestionPostRequest {
@@ -79,8 +56,10 @@ export interface IQuestionPostRequest {
   questions: QuestionAnswerPair[];
 }
 
-export interface IQuestionPostResponse extends DefaultResponse {
-  data: QuestionPostRepsonseData;
+export interface IQuestionPostResponse {
+  nickname: string;
+  percent: number;
+  snowman: Snowman;
 }
 
 export interface ILetterPostRequest {
@@ -88,4 +67,3 @@ export interface ILetterPostRequest {
   letter: string;
 }
 
-export interface ILetterPostResponse extends DefaultResponse {}
