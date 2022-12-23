@@ -1,5 +1,6 @@
-import { MBTI } from './../src/components/Snowman';
-export const snowmanlist: { id: number; type: MBTI; seen: boolean }[] = [
+import { snowman } from 'src/types/town';
+
+export const snowmanlist: snowman[] = [
   {
     id: 1,
     type: 'ENFJ',

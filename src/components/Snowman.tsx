@@ -1,22 +1,5 @@
+import { MBTI } from 'src/types/town';
 import BaseImage from './BaseImage';
-
-export type MBTI =
-  | 'ENFJ'
-  | 'ENFP'
-  | 'ENTJ'
-  | 'ENTP'
-  | 'ESFJ'
-  | 'ESFP'
-  | 'ESTJ'
-  | 'ESTP'
-  | 'INFJ'
-  | 'INFP'
-  | 'INTJ'
-  | 'INTP'
-  | 'ISFJ'
-  | 'ISFP'
-  | 'ISTJ'
-  | 'ISTP';
 
 type Props = {
   type: MBTI;

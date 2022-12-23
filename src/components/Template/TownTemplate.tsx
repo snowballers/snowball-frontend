@@ -8,11 +8,15 @@ import { useRef } from 'react';
 import Gear from '@components/icons/Gear';
 import SnowmanList from '@components/SnowmanList';
 import Snowflake from '@components/Snowflake';
+import { snowmanlist } from '__mocks__/snowmanlist';
 
 type Props = {
   title: string;
   isMine?: boolean;
 };
+
+const TITLE_MOCK = "동용's 눈사람 마을";
+const SNOWMAN_NUM_MOCK = 7;
 
 const TownTemplate = (props: Props) => {
   const { title, isMine } = props;
@@ -33,8 +37,8 @@ const TownTemplate = (props: Props) => {
       </div>
 
       {isMine ? <Gear className="absolute z-20 top-4 right-4" fill="#e8eff6" onClick={onClick} /> : ''}
-      <TownTitleBox isMine={isMine} />
-      <SnowmanList />
+      <TownTitleBox isMine={isMine} totalSnowman={SNOWMAN_NUM_MOCK} townName={TITLE_MOCK} />
+      <SnowmanList snowmans={snowmanlist} />
 
       {isMine ? (
         <FlexBox position="fixed" direction={direction} className="z-20 w-full sm:w-6/12 bottom-[50px] pr-[21px] pl-[21px]">

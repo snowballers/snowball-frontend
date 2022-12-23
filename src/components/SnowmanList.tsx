@@ -1,15 +1,20 @@
-import { snowmanlist } from '__mocks__/snowmanlist';
 import Snowman from './Snowman';
 import FlexBox from './FlexBox';
 import Arrow from './icons/Arrow';
 import { useState } from 'react';
+import { snowman } from 'src/types/town';
 
 const count = 7;
 
-function SnowmanList() {
+type Props = {
+  snowmans: snowman[];
+};
+
+function SnowmanList(props: Props) {
+  const { snowmans } = props;
   const [pageNum, setPageNum] = useState(1);
-  const maxPageNum = Math.ceil(snowmanlist.length / count);
-  const datas = snowmanlist.slice((pageNum - 1) * count, pageNum * count) || [];
+  const maxPageNum = Math.ceil(snowmans.length / count);
+  const datas = snowmans.slice((pageNum - 1) * count, pageNum * count) || [];
 
   const nextPage = () => {
     if (maxPageNum <= pageNum) return;
