@@ -7,6 +7,7 @@ import ShareBtn from '@components/Town/ShareBtn';
 import { useRef } from 'react';
 import Gear from '@components/icons/Gear';
 import SnowmanList from '@components/SnowmanList';
+import Snowflake from '@components/Snowflake';
 
 type Props = {
   title: string;
@@ -26,6 +27,7 @@ const TownTemplate = (props: Props) => {
 
   return (
     <div ref={pageRef} className="relative w-full h-[100vh]">
+      <Snowflake />
       <div className="absolute z-0 w-full h-full">
         <BaseImage src="/image/hometown.png" alt="마을 배경 이미지" fill />
       </div>

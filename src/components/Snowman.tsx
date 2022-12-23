@@ -26,6 +26,10 @@ type Props = {
 function Snowman(props: Props) {
   const { type, seen } = props;
   const src = `/snowman/${type.toLowerCase()}.png`;
-  return <BaseImage src={src} alt={`${type} 눈사람`} width={160} height={181} />;
+  return (
+    <div className={`relative max-w-[360px] max-h-[400px] aspect-[3/4]`}>
+      <BaseImage src={src} alt={`${type} 눈사람`} fill />
+    </div>
+  );
 }
 export default Snowman;
