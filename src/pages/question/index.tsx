@@ -13,7 +13,7 @@ const Question: NextPage = () => {
     questionLoading,
     SNOWMAN_LOADING_TEXT,
     snowmanLoading,
-    disabled,
+    prevBtnDisabled,
     finished,
     questionNo,
     currentQuestion,
@@ -45,12 +45,12 @@ const Question: NextPage = () => {
         <button
           type="button"
           className="absolute text-primary-600 text-2xl p-6 text-center inline-flex items-center"
-          disabled={disabled}
+          disabled={prevBtnDisabled}
           onClick={() => {
             prevQuestion();
           }}
         >
-          <span>{'<'}</span>
+          <span>{prevBtnDisabled ? '' : '<'}</span>
         </button>
         <p className="relative text-center w-1/2 mx-auto py-7 text-primary-600">눈사람 만드는 중...</p>
       </div>

@@ -1,13 +1,4 @@
-export type Question = {
-    id: number;
-    content: string;
-}
-
-export type Answer = {
-    question_id: number;
-    id: number;
-    content: string;
-}
+import { Answer } from "@api/types";
 
 export type ProgressBarProps = {
     finished: boolean;
