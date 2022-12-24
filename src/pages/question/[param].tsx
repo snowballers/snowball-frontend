@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 
 import Container from '@components/Container';
 import { ProgressBar, QuestionWrapper, Loading, SenderWrapper } from '@components/Question';
-import useQuestionnaire from '@hooks/Question/useQuestionPage';
+import useQuestionPage from '@hooks/Question/useQuestionPage';
 
 const Question: NextPage = () => {
   const {
@@ -20,10 +20,11 @@ const Question: NextPage = () => {
     currentAnswers,
     selectedAnswers,
     totalQuestions,
+    isLoadingPage,
     prevQuestion,
     nextQuestion,
     finishSnowman,
-  } = useQuestionnaire();
+  } = useQuestionPage();
   const progressBarProps = { finished, questionNo, totalQuestions };
   const questionWrapperProps = { finished, questionNo, currentQuestion, currentAnswers, selectedAnswers, nextQuestion, finishSnowman };
 
@@ -31,7 +32,7 @@ const Question: NextPage = () => {
     return <SenderWrapper setSender={setSender} setIsSender={setIsSender} />;
   }
 
-  if (snowmanLoading) {
+  if (snowmanLoading || isLoadingPage) {
     return <Loading type="snowman" text={SNOWMAN_LOADING_TEXT} />;
   }
 

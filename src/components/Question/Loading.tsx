@@ -12,14 +12,6 @@ type Props = {
 const Loading = ({ type, text }: Props) => {
   const router = useRouter();
 
-  useEffect(() => {
-    if (type === 'snowman') {
-      setTimeout(() => {
-        router.push('/result');
-      }, 3000);
-    }
-  }, [type, router]);
-
   return (
     <Container bgColor="bg-primary-100">
       <Image src="/roll-full.gif" alt="roll" fill objectFit="cover" />
