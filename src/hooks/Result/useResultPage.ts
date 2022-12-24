@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 
 import { Snowman } from '@api/types';
 import { useCreateLetter } from '@hooks/api/useLetter';
-import { useReadSnowman } from '@hooks/api/useSnowman';
 
 export default function useResultPage() {
     const router = useRouter();
@@ -13,6 +12,8 @@ export default function useResultPage() {
     const [letter, setLetter] = useState<string>('');
     const [percent, setPercent] = useState<number>(0);
     const [snowman, setSnowman] = useState<Snowman>();
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
     const { mutate: createLetter, isLoading: letterLoading, error: letterError} = useCreateLetter();
 
@@ -26,5 +27,14 @@ export default function useResultPage() {
         setSender(router.query.sender as string);
     }, [router.isReady, router.query]);
 
-    return { sender, nickname, percent, snowman, letter, setLetter, createLetter };
+    useEffect(() => {
+        if (!nickname) return;
+        setLoading(false);
+    }, [nickname]); 
+
+    useEffect(() => {
+        if (router.isReady && !router.query.data) setError(true);
+    }, [router])
+
+    return { sender, nickname, percent, snowman, letter, loading, error, setLetter, createLetter };
 }
