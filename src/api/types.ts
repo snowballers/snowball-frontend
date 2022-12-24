@@ -5,10 +5,10 @@ interface QuestionAnswerPair {
   answerId: number;
 }
 
-interface Snowman {
+export interface Snowman {
   id: number;
   name: string;
-  imageUrl: string;
+  type: string;
   description: string;
 }
 

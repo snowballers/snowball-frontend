@@ -5,13 +5,18 @@ import ResultImageText from '@components/Result/ResultImageText';
 import ReadMoreButton from '@components/Result/ReadMoreButton';
 import { useInView } from 'react-intersection-observer';
 import { useState, useRef, useEffect } from 'react';
+import useResultPage from '@hooks/Result/useResultPage';
+import { Loading } from '@components/Question';
 
 const Result: NextPage = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isClicked, setClicked] = useState(false);
+
   const { ref, inView } = useInView({
     threshold: 0,
   });
+
+  const { sender, nickname, percent, snowman, letter, loading, error, setLetter, createLetter } = useResultPage();
 
   function onClick() {
     if (!scrollRef.current) return;
@@ -29,10 +34,26 @@ const Result: NextPage = () => {
     }
   }, [inView]);
 
+  if (error) {
+    return <Loading type="error" text="잘못된 접근입니다." />;
+  }
+
+  if (loading) {
+    return <Loading type="" text="로딩 중입니다..." />;
+  }
+
   return (
     <div ref={scrollRef}>
       <Container bgColor="bg-primary-50">
-        <ResultImageText />
+        <ResultImageText
+          sender={sender}
+          nickname={nickname}
+          percent={percent}
+          snowman={snowman}
+          letter={letter}
+          setLetter={setLetter}
+          createLetter={createLetter}
+        />
         <ReadMoreButton isClicked={isClicked} onClick={onClick} />
         <div ref={ref} className="absolute -bottom-5"></div>
       </Container>
