@@ -27,7 +27,7 @@ const TownTitleBox = (props: Props) => {
             defaultValue={townName}
           />
         ) : (
-          <Title text={townName || ''} className="text-primary-50 text-3xl pr-[13px]" />
+          <Title text={`${townName}'s 눈사람 마을` || ''} className="text-primary-50 text-3xl pr-[13px]" />
         )}
         {isMine && <Pencil onClick={() => setEdit((prev) => !prev)} fill={isEdit ? '#55b8ff' : undefined} />}
       </FlexBox>
