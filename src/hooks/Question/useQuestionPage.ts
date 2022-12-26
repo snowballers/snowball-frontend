@@ -17,7 +17,7 @@ export default function useQuestionPage() {
     const [finished, setFinished] = useState<boolean>(false);
     const [prevBtnDisabled, setPrevBtnDisabled] = useState<boolean>(false);
     const [questions, setQuestions] = useState<Question[]>([]);
-    const [totalQuestions, setTotalQuestions] = useState<number>(2);
+    const [totalQuestions, setTotalQuestions] = useState<number>(1);
     const [questionNo, setQuestionNo] = useState<number>(1);
     const [currentQuestion, setCurrentQuestion] = useState<string>('');
     const [currentAnswers, setCurrentAnswers] = useState<Answer[]>([]);

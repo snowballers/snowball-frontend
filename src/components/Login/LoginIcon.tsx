@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useEffect } from 'react';
 
 type Props = {
   img: string;
@@ -7,10 +6,6 @@ type Props = {
 };
 
 const LoginIcon = ({ img, apiUrl }: Props) => {
-  useEffect(() => {
-    console.log(apiUrl);
-  }, [apiUrl]);
-
   return (
     <>
       <a href={apiUrl}>

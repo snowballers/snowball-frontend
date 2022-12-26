@@ -7,7 +7,6 @@ import { useCreateLetter } from '@hooks/api/useLetter';
 export default function useResultPage() {
     const router = useRouter();
 
-    const [sender, setSender] = useState<string>('');
     const [nickname, setNickname] = useState<string>('');
     const [letter, setLetter] = useState<string>('');
     const [percent, setPercent] = useState<number>(0);
@@ -24,7 +23,6 @@ export default function useResultPage() {
         setNickname(_nickname);
         setPercent(_percent);
         setSnowman(_snowman);
-        setSender(router.query.sender as string);
     }, [router.isReady, router.query]);
 
     useEffect(() => {
@@ -36,5 +34,5 @@ export default function useResultPage() {
         if (router.isReady && !router.query.data) setError(true);
     }, [router])
 
-    return { sender, nickname, percent, snowman, letter, loading, error, setLetter, createLetter };
+    return { nickname, percent, snowman, letter, loading, error, setLetter, createLetter };
 }

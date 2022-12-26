@@ -16,7 +16,7 @@ const Result: NextPage = () => {
     threshold: 0,
   });
 
-  const { sender, nickname, percent, snowman, letter, loading, error, setLetter, createLetter } = useResultPage();
+  const { nickname, percent, snowman, letter, loading, error, setLetter, createLetter } = useResultPage();
 
   function onClick() {
     if (!scrollRef.current) return;
@@ -43,10 +43,10 @@ const Result: NextPage = () => {
   }
 
   return (
-    <div ref={scrollRef}>
+    <div>
       <Container bgColor="bg-primary-50">
         <ResultImageText
-          sender={sender}
+          scrollRef={scrollRef}
           nickname={nickname}
           percent={percent}
           snowman={snowman}
