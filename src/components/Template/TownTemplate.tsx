@@ -41,7 +41,7 @@ const TownTemplate = (props: Props) => {
 
       {isMine ? <Gear className="absolute z-20 top-4 right-4" fill="#e8eff6" onClick={onClick} /> : ''}
       <TownTitleBox isMine={isMine} totalSnowman={totalSnowman} townName={townName} url={url} />
-      <SnowmanList snowmans={snowmans} />
+      <SnowmanList snowmans={snowmans} url={url} isMine={isMine} />
 
       {isMine ? (
         <FlexBox position="fixed" direction={direction} className="z-20 w-full sm:w-6/12 bottom-[50px] pr-[21px] pl-[21px]">

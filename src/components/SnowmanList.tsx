@@ -8,10 +8,12 @@ const count = 7;
 
 type Props = {
   snowmans: TownSnowman[];
+  url: string;
+  isMine: boolean;
 };
 
 function SnowmanList(props: Props) {
-  const { snowmans } = props;
+  const { snowmans, url, isMine } = props;
   const [pageNum, setPageNum] = useState(1);
   const maxPageNum = Math.ceil(snowmans.length / count);
   const datas = snowmans.slice((pageNum - 1) * count, pageNum * count) || [];
@@ -35,21 +37,21 @@ function SnowmanList(props: Props) {
       <FlexBox
         position="absolute"
         direction="flex-col"
-        className="top-[50%] -translate-y-[30%] left-[50%] -translate-x-[50%] w-[calc(100%_-_115.32px)] h-[calc(100%_-_470px)] max-h-[1200px]"
+        className="top-[50%] -translate-y-[30%] left-[50%] -translate-x-[50%] w-[calc(100%_-_115.32px)] h-[calc(100%_-_470px)] max-h-[1200px] z-20"
       >
         <FlexBox position="relative" direction="flex-row" className="justify-center h-full">
           {datas.slice(0, 2).map(({ id, type, seen }) => (
-            <Snowman key={id} {...{ type, seen }} />
+            <Snowman key={id} url={url} isMine={isMine} {...{ id, type, seen }} />
           ))}
         </FlexBox>
         <FlexBox position="relative" direction="flex-row" className="justify-center h-full">
           {datas.slice(2, 5).map(({ id, type, seen }) => (
-            <Snowman key={id} {...{ type, seen }} />
+            <Snowman key={id} url={url} isMine={isMine} {...{ id, type, seen }} />
           ))}
         </FlexBox>
         <FlexBox position="relative" direction="flex-row" className="justify-center h-full">
           {datas.slice(5, count).map(({ id, type, seen }) => (
-            <Snowman key={id} {...{ type, seen }} />
+            <Snowman key={id} url={url} isMine={isMine} {...{ id, type, seen }} />
           ))}
         </FlexBox>
       </FlexBox>
