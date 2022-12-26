@@ -3,13 +3,14 @@ import { useRouter } from 'next/router';
 
 type Props = {
   direction: 'flex-row' | 'flex-col';
+  url: string;
 };
 
 function TownFooterBtn(props: Props) {
-  const { direction } = props;
+  const { direction, url } = props;
   const router = useRouter();
   function makeSnowman() {
-    router.push('/question');
+    router.push(`/question/${url}`);
   }
   function login() {
     router.push('/login');
