@@ -8,23 +8,28 @@ import { useRef } from 'react';
 import Gear from '@components/icons/Gear';
 import SnowmanList from '@components/SnowmanList';
 import Snowflake from '@components/Snowflake';
-import { snowmanlist } from '__mocks__/snowmanlist';
 import TownFooterBtn from '@components/Town/TownFooterBtn';
+import { useReadTown } from '@hooks/api/useTown';
+import { Loading } from '@components/Question';
 
 type Props = {
   title: string;
+  url: string;
 };
 
-const TITLE_MOCK = '동용';
-const SNOWMAN_NUM_MOCK = 7;
-
 const TownTemplate = (props: Props) => {
-  const { title } = props;
-  const isMine = true;
-  const direction = isMine ? 'flex-row' : 'flex-col';
+  const { title, url } = props;
+  const { data, isLoading, isError } = useReadTown(url);
   const pageRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
+  if (isLoading) return <Loading type="loading" text="눈사람 마을 불러오는 중" />;
+  if (isError) return <Loading type="error" text="눈사람 마을 불러오기 실패" />;
+
+  const { data: townData } = data?.data;
+  const { isMine, townName, totalSnowman, snowmans } = townData;
+
+  const direction = isMine ? 'flex-row' : 'flex-col';
   const onClick = () => router.push('/setting');
 
   return (
@@ -35,8 +40,8 @@ const TownTemplate = (props: Props) => {
       </div>
 
       {isMine ? <Gear className="absolute z-20 top-4 right-4" fill="#e8eff6" onClick={onClick} /> : ''}
-      <TownTitleBox isMine={isMine} totalSnowman={SNOWMAN_NUM_MOCK} townName={TITLE_MOCK} />
-      <SnowmanList snowmans={snowmanlist} />
+      <TownTitleBox isMine={isMine} totalSnowman={totalSnowman} townName={townName} url={url} />
+      <SnowmanList snowmans={snowmans} />
 
       {isMine ? (
         <FlexBox position="fixed" direction={direction} className="z-20 w-full sm:w-6/12 bottom-[50px] pr-[21px] pl-[21px]">
@@ -44,7 +49,7 @@ const TownTemplate = (props: Props) => {
           <ShareBtn title={title} />
         </FlexBox>
       ) : (
-        <TownFooterBtn direction={direction} />
+        <TownFooterBtn direction={direction} url={url} />
       )}
     </div>
   );
