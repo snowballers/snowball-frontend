@@ -23,7 +23,7 @@ const QuestionWrapper = ({ finished, questionNo, currentQuestion, currentAnswers
             return (
               <div className="h-20 flex justify-center" key={i}>
                 <Button
-                  width="w-4/5"
+                  width={(a.content.length > 40 ? `text-sm` : `text-base`) + ` w-4/5`}
                   text={a.content}
                   selected={selectedAnswers[questionNo] === a.id}
                   onClick={() => {
