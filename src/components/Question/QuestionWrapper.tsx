@@ -16,7 +16,7 @@ const QuestionWrapper = ({ finished, questionNo, currentQuestion, currentAnswers
         </>
       ) : (
         <>
-          <div className="pt-24 pb-16">
+          <div className="pt-24 pb-16 w-4/5 mx-auto">
             <p className="text-xl text-center text-primary-600">{currentQuestion}</p>
           </div>
           {currentAnswers?.map((a, i) => {
