@@ -19,7 +19,7 @@ type Props = {
 
 const ResultImageText = ({ scrollRef, nickname, percent, snowman, letter, setLetter, createLetter }: Props) => {
   return (
-    <div ref={scrollRef} className="absolute inset-x-0 z-50" style={{ background: 'rgb(237, 239, 247)' }}>
+    <div ref={scrollRef} className="absolute w-full sm:w-[480px] z-50" style={{ background: 'rgb(237, 239, 247)' }}>
       <Snowflake />
       <Image className="absolute -z-[10] w-full h-100vh" src="/image/hometown.png" alt="마을 배경 이미지" width="0" height="0" sizes="100vw" />
       <Title text={`짠! ${nickname}님을 위한`} className="text-center pt-20 text-primary-50 text-2xl inset-x-0" />

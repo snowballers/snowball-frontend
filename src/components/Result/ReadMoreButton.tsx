@@ -9,7 +9,7 @@ const ReadMoreButton = (props: Props) => {
   const { isClicked, onClick } = props;
   return (
     <div
-      className={`absolute inset-x-0 bottom-0 z-50 ${isClicked ? 'invisible opacity-0' : 'visible opacity-100'}`}
+      className={`absolute w-full sm:w-[480px] bottom-0 z-50 ${isClicked ? 'invisible opacity-0' : 'visible opacity-100'}`}
       style={{
         background: 'linear-gradient(180deg, rgba(244,247,251,0) 0%, rgba(120,120,120,1) 100%)',
         transition: '0.5s',
