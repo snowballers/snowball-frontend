@@ -28,7 +28,7 @@ const DetailTemplate = (props: Props) => {
   const { senderName, snowman, letter } = snowmanData;
 
   return (
-    <div className="absolute inset-x-0 z-50" style={{ background: 'rgb(237, 239, 247)' }}>
+    <div className="absolute w-full sm:w-[480px] z-50" style={{ background: 'rgb(237, 239, 247)' }}>
       <Snowflake />
       <button type="button" className="absolute text-primary-50 text-2xl p-6 text-center inline-flex items-center z-50" onClick={onClick}>
         <span>{'<'}</span>

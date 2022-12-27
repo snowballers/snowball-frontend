@@ -17,7 +17,7 @@ function TownFooterBtn(props: Props) {
   }
 
   return (
-    <FlexBox position="fixed" direction={direction} className="z-20 w-full sm:w-6/12 bottom-[50px] pr-[21px] pl-[21px]">
+    <FlexBox position="fixed" direction={direction} className="z-20 w-full sm:w-[480px] bottom-[50px] pr-[21px] pl-[21px]">
       <button type="button" onClick={makeSnowman} className="bg-primary-350 h-[50px] rounded-[20px] text-[22px] text-[#fff]">
         눈사람 만들어주기
       </button>
