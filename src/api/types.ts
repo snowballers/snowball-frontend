@@ -67,3 +67,8 @@ export interface ILetterPostRequest {
   letter: string;
 }
 
+export interface WithDrawalResponse {
+  success: boolean;
+  error: Error | null;
+  data: null;
+}

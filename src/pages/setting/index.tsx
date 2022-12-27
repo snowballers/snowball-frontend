@@ -2,12 +2,30 @@ import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
 import Container from '@components/Container';
+import { deleteAccessToken } from 'src/utils/auth';
+import { withdraw } from '@api/auth';
+import { toastError } from 'src/utils/toaster';
 
 const Setting: NextPage = () => {
   const router = useRouter();
 
   function onClick() {
     router.push('/town');
+  }
+
+  function logout() {
+    deleteAccessToken();
+    router.push('/login');
+  }
+
+  async function withdrawal() {
+    try {
+      await withdraw();
+      deleteAccessToken();
+      router.push('/login');
+    } catch (err) {
+      toastError({ message: '회워 탈퇴에 실패했습니다.' });
+    }
   }
 
   return (
@@ -23,6 +41,7 @@ const Setting: NextPage = () => {
           type="button"
           className="block mx-auto w-3/5 text-primary-50 font-medium text-lg px-5 py-2.5 text-center mb-4"
           style={{ borderBottom: '1.5px solid rgba(255, 255, 255, .25)' }}
+          onClick={logout}
         >
           로그아웃
         </button>
@@ -30,6 +49,7 @@ const Setting: NextPage = () => {
           type="button"
           className="block mx-auto w-3/5 text-primary-50 font-medium text-lg px-5 py-2.5 text-center"
           style={{ borderBottom: '1.5px solid rgba(255, 255, 255, .25)' }}
+          onClick={withdrawal}
         >
           회원 탈퇴
         </button>
