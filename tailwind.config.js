@@ -25,6 +25,9 @@ module.exports = {
       backgroundImage: {
         'letter-background': "url('/image/letter_background.png')",
       },
+      screens: {
+        sm: '480px',
+      },
     },
   },
   plugins: [require('flowbite/plugin')],
