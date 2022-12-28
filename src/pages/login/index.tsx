@@ -19,10 +19,10 @@ const Login: NextPage = () => {
       <div className="relative z-0 w-full h-screen">
         <BaseImage src="/image/logintown.png" alt="마을 배경 이미지" fill />
       </div>
-      <div className="absolute inset-x-0 bottom-[20vh] z-50">
+      <div className="absolute inset-x-0 bottom-[10vh] z-50">
         <div className="flex justify-center">
-          <LoginIcon img={'/ico_kakao.png'} apiUrl={KAKAO_AUTH_URL!} />
-          <LoginIcon img={'/ico_google.png'} apiUrl={GOOGLE_AUTH_URL!} />
+          <LoginIcon img={'/kakao_login_large_wide.png'} apiUrl={KAKAO_AUTH_URL!} />
+          {/* <LoginIcon img={'/ico_google.png'} apiUrl={GOOGLE_AUTH_URL!} /> */}
         </div>
       </div>
     </Container>
