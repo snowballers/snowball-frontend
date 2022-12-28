@@ -72,3 +72,13 @@ export interface WithDrawalResponse {
   error: Error | null;
   data: null;
 }
+
+export interface OauthLoginResponse {
+  isSuccess: boolean;
+  code: number;
+  message: string;
+  data: {
+    jwt: string;
+    'town-url': string;
+  };
+}
