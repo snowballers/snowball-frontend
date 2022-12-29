@@ -4,6 +4,8 @@ import { createLetter } from '@api/letter';
 import { ILetterPostRequest } from '@api/types';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { queryKey } from 'src/constants/api';
+import { queryClient } from 'src/pages/_app';
 
 export function useCreateLetter() {
   const router = useRouter();
@@ -21,6 +23,7 @@ export function useCreateLetter() {
     },
     {
       onSuccess: () => {
+        queryClient.invalidateQueries(queryKey.town(townUrl));
         router.push(`/town/${townUrl}`);
       },
     },

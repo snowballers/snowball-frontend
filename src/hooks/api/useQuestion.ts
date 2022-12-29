@@ -5,6 +5,7 @@ import { IQuestionPostRequest } from '@api/types';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { queryKey } from 'src/constants/api';
+import { queryClient } from 'src/pages/_app';
 
 export function useReadQuestion() {
   const router = useRouter();
@@ -38,6 +39,7 @@ export function useCreateQuestion() {
     {
       onSuccess: (data) => {
         setTimeout(async () => {
+          queryClient.invalidateQueries(queryKey.town(townUrl));
           router.push(
             {
               pathname: `/result/${townUrl}`,

@@ -12,7 +12,7 @@ export function usePostAuthCode() {
       const { jwt, townUrl } = data.data;
       toastSuccess({ message: '로그인에 성공했습니다.' });
       setAccessToken(jwt);
-      router.push(`/town/${townUrl}`);
+      router.replace(`/town/${townUrl}`);
     },
     onError: () => {
       toastError({ message: '로그인에 실패했습니다.' });
