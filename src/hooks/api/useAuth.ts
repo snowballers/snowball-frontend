@@ -9,10 +9,10 @@ export function usePostAuthCode() {
   const router = useRouter();
   return useMutation(postAuthCode, {
     onSuccess: (data) => {
-      const authData = data.data;
+      const { jwt, townUrl } = data.data;
       toastSuccess({ message: '로그인에 성공했습니다.' });
-      setAccessToken(authData.jwt);
-      router.push(`/town${authData['town-url']}`);
+      setAccessToken(jwt);
+      router.push(`/town/${townUrl}`);
     },
     onError: () => {
       toastError({ message: '로그인에 실패했습니다.' });

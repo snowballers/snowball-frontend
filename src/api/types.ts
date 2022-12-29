@@ -79,6 +79,6 @@ export interface OauthLoginResponse {
   message: string;
   data: {
     jwt: string;
-    'town-url': string;
+    townUrl: string;
   };
 }
