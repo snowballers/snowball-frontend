@@ -67,3 +67,18 @@ export interface ILetterPostRequest {
   letter: string;
 }
 
+export interface WithDrawalResponse {
+  success: boolean;
+  error: Error | null;
+  data: null;
+}
+
+export interface OauthLoginResponse {
+  isSuccess: boolean;
+  code: number;
+  message: string;
+  data: {
+    jwt: string;
+    townUrl: string;
+  };
+}

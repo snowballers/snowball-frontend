@@ -1,6 +1,4 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import { MBTI } from 'src/types/town';
 import BaseImage from './BaseImage';
 
@@ -15,7 +13,7 @@ type Props = {
 function Snowman(props: Props) {
   const router = useRouter();
   const { id, type, seen, url, isMine } = props;
-  const src = `/snowman/${type.toLowerCase()}.png`;
+  const src = seen ? `/snowman/${type.toLowerCase()}.png` : '/snowman/unknown2.png';
 
   function seeDetail() {
     router.push({ pathname: '/detail', query: { url: url, snowmanId: id } }, '/detail');

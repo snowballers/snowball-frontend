@@ -4,6 +4,8 @@ import { readQuestion, createSnowman } from '@api/question';
 import { IQuestionPostRequest } from '@api/types';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { queryKey } from 'src/constants/api';
+import { queryClient } from 'src/pages/_app';
 
 export function useReadQuestion() {
   const router = useRouter();
@@ -15,7 +17,7 @@ export function useReadQuestion() {
     setTownUrl(router.query.param as string);
   }, [router.isReady, router.query]);
 
-  return useQuery(['question', townUrl], () => readQuestion(townUrl), { enabled: townUrl.length > 0 });
+  return useQuery(queryKey.question(townUrl), () => readQuestion(townUrl), { enabled: townUrl.length > 0 });
 }
 
 export function useCreateQuestion() {
@@ -29,15 +31,24 @@ export function useCreateQuestion() {
     setTownUrl(router.query.param as string);
   }, [router.isReady, router.query]);
 
-  return useMutation((data: IQuestionPostRequest) => {
-    setSender(data.sender);
-    return createSnowman(townUrl, data);
-  }, {onSuccess: (data) => {
-    setTimeout(async () => {
-      router.push({
-        pathname: `/result/${townUrl}`,
-        query: { data: JSON.stringify(data), sender: sender }
-      }, `/result/${townUrl}`);
-    }, 2000);
-  }});
+  return useMutation(
+    (data: IQuestionPostRequest) => {
+      setSender(data.sender);
+      return createSnowman(townUrl, data);
+    },
+    {
+      onSuccess: (data) => {
+        setTimeout(async () => {
+          queryClient.invalidateQueries(queryKey.town(townUrl));
+          router.push(
+            {
+              pathname: `/result/${townUrl}`,
+              query: { data: JSON.stringify(data), sender: sender },
+            },
+            `/result/${townUrl}`,
+          );
+        }, 2000);
+      },
+    },
+  );
 }
