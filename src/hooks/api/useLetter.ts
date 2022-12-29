@@ -15,9 +15,14 @@ export function useCreateLetter() {
     setTownUrl(router.query.param as string);
   }, [router.isReady, router.query]);
 
-  return useMutation((data: ILetterPostRequest) => {
-    return createLetter(townUrl, data);
-  }, {onSuccess: () => {
-      router.push(`/town/${townUrl}`);
-  }});
+  return useMutation(
+    (data: ILetterPostRequest) => {
+      return createLetter(townUrl, data);
+    },
+    {
+      onSuccess: () => {
+        router.push(`/town/${townUrl}`);
+      },
+    },
+  );
 }

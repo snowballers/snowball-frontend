@@ -24,7 +24,7 @@ const Setting: NextPage = () => {
       deleteAccessToken();
       router.push('/login');
     } catch (err) {
-      toastError({ message: '회워 탈퇴에 실패했습니다.' });
+      toastError({ message: '회원 탈퇴에 실패했습니다.' });
     }
   }
 

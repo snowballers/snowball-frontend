@@ -19,7 +19,7 @@ const TownTitleBox = (props: Props) => {
   const snowmanText = totalSnowman + SNOWMAN_NUM_TEXT;
   const [isEdit, setEdit] = useState(false);
   const [townValue, setTownValue] = useState(townName);
-  const { mutate } = useUpdateTown();
+  const { mutate } = useUpdateTown(url);
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTownValue(e.target.value);
   };
