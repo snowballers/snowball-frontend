@@ -1,11 +1,13 @@
+import { AUTHORIZATION } from 'src/constants/oauth';
+
 export const setAccessToken = (token: string | null) => {
-  localStorage.setItem('authorization', token || '');
+  localStorage.setItem(AUTHORIZATION, token || '');
 };
 
 export const getAccessToken = () => {
-  return localStorage.getItem('authorization');
+  return localStorage.getItem(AUTHORIZATION);
 };
 
 export const deleteAccessToken = () => {
-  localStorage.setItem('authorization', '');
+  localStorage.setItem(AUTHORIZATION, '');
 };
