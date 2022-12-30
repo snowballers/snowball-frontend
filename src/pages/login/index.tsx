@@ -15,7 +15,6 @@ const Login: NextPage = () => {
 
   useEffect(() => {
     if (getAccessToken()) {
-      console.log(getTownURL());
       router.replace(`/town/${getTownURL()}`);
     }
   }, []);
