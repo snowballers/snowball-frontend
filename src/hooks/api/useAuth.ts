@@ -4,7 +4,6 @@ import { setAccessToken } from './../../utils/auth';
 import { useMutation } from '@tanstack/react-query';
 
 import { postAuthCode } from '@api/auth';
-import { setTownURL } from 'src/utils/town';
 
 export function usePostAuthCode() {
   const router = useRouter();
@@ -13,7 +12,6 @@ export function usePostAuthCode() {
       const { jwt, townUrl } = data.data;
       toastSuccess({ message: '로그인에 성공했습니다.' });
       setAccessToken(jwt);
-      setTownURL(townUrl);
       router.replace(`/town/${townUrl}`);
     },
     onError: () => {
