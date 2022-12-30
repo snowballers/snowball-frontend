@@ -9,6 +9,15 @@ const nextConfig = {
     OAUTH_REDIRECT_URI: process.env.OAUTH_REDIRECT_URI,
     OAUTH_CLIENT_ID: process.env.OAUTH_CLIENT_ID,
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/login',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
