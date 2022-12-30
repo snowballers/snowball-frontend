@@ -5,6 +5,7 @@ import Container from '@components/Container';
 import { deleteAccessToken } from 'src/utils/auth';
 import { withdraw } from '@api/auth';
 import { toastError } from 'src/utils/toaster';
+import { deleteTownURL } from 'src/utils/town';
 
 const Setting: NextPage = () => {
   const router = useRouter();
@@ -15,6 +16,7 @@ const Setting: NextPage = () => {
 
   function logout() {
     deleteAccessToken();
+    deleteTownURL();
     router.push('/login');
   }
 
@@ -22,6 +24,7 @@ const Setting: NextPage = () => {
     try {
       await withdraw();
       deleteAccessToken();
+      deleteTownURL();
       router.push('/login');
     } catch (err) {
       toastError({ message: '회원 탈퇴에 실패했습니다.' });
