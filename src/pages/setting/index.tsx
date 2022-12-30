@@ -5,13 +5,13 @@ import Container from '@components/Container';
 import { deleteAccessToken } from 'src/utils/auth';
 import { withdraw } from '@api/auth';
 import { toastError } from 'src/utils/toaster';
-import { deleteTownURL } from 'src/utils/town';
+import { deleteTownURL, getTownURL } from 'src/utils/town';
 
 const Setting: NextPage = () => {
   const router = useRouter();
 
   function onClick() {
-    router.push('/town');
+    router.push(`/town/${getTownURL()}`);
   }
 
   function logout() {
