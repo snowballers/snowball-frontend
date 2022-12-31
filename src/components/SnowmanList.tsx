@@ -29,7 +29,7 @@ function SnowmanList(props: Props) {
 
   return (
     <>
-      <FlexBox position="absolute" direction="flex-row" className="z-20 w-full top-[50%] -translate-y-[50%] justify-between">
+      <FlexBox position="absolute" direction="flex-row" className="z-50 w-full top-[50%] -translate-y-[50%] justify-between">
         <Arrow onClick={prevPage} fill="#55b8ff" className="relative w-[24px] h-[48px] left-[33.66px]" disabled={pageNum === 1} />
         <Arrow onClick={nextPage} fill="#55b8ff" className="relative w-[24px] h-[48px] rotate-180 right-[33.66px]" disabled={pageNum === maxPageNum} />
       </FlexBox>
@@ -37,7 +37,7 @@ function SnowmanList(props: Props) {
       <FlexBox
         position="absolute"
         direction="flex-col"
-        className="top-[50%] -translate-y-[30%] left-[50%] -translate-x-[50%] w-[calc(100%_-_115.32px)] h-[calc(100%_-_470px)] max-h-[1200px] z-20"
+        className="top-[50%] -translate-y-[30%] left-[50%] -translate-x-[50%] w-[90vw] h-[50vh] max-h-[1200px] z-20"
       >
         <FlexBox position="relative" direction="flex-row" className="justify-center h-full">
           {datas.slice(0, 2).map(({ id, type, seen }) => (
