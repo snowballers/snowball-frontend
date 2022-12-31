@@ -16,7 +16,7 @@ function ShareBtn(props: Props) {
   return (
     <button
       type="button"
-      className="absolute left-[50%] -translate-x-[50%] top-[50%] -translate-y-[50%] text-[22px] text-primary-900 pt-1"
+      className="absolute left-[50%] -translate-x-[50%] top-[50%] -translate-y-[50%] text-[22px] text-primary-900 pt-1 min-w-[200px]"
       onClick={handleShare}
     >
       내 마을 링크 공유하기
