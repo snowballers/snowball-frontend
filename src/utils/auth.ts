@@ -9,5 +9,5 @@ export const getAccessToken = () => {
 };
 
 export const deleteAccessToken = () => {
-  localStorage.setItem(AUTHORIZATION, '');
+  localStorage.removeItem(AUTHORIZATION);
 };

@@ -9,5 +9,5 @@ export const getTownURL = () => {
 };
 
 export const deleteTownURL = () => {
-  localStorage.setItem(TOWNURL, '');
+  localStorage.removeItem(TOWNURL);
 };
