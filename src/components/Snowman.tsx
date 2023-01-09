@@ -21,7 +21,7 @@ function Snowman(props: Props) {
 
   return (
     <div className={`relative max-w-[160px] max-h-[160px] aspect-[0.9]`} onClick={isMine ? seeDetail : () => {}}>
-      <img className="absolute w-full h-full" src={src} alt={`${type} 눈사람`} />
+      <img src={src} alt={`${type} 눈사람`} />
     </div>
   );
 }
