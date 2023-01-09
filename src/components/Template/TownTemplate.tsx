@@ -45,7 +45,7 @@ const TownTemplate = (props: Props) => {
 
       {isMine ? (
         <FlexBox position="fixed" direction={direction} className="z-20 w-full sm:w-[480px] bottom-[50px] pr-[21px] pl-[21px]">
-          <CameraBtn pageRef={pageRef} />
+          {/* <CameraBtn pageRef={pageRef} /> */}
           <ShareBtn title={title} />
         </FlexBox>
       ) : (
