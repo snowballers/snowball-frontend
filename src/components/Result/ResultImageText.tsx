@@ -46,7 +46,11 @@ const ResultImageText = ({ scrollRef, nickname, percent, snowman, letter, setLet
           text="완성!"
           selected={true}
           onClick={
-            router.query.param !== getTownURL() ? () => createLetter({ snowmanId: snowman?.id, letter }) : () => router.push(`/town/${router.query.param}`)
+            router.query.param !== getTownURL()
+              ? () => createLetter({ snowmanId: snowman?.id, letter })
+              : () => {
+                  router.push(`/town/${router.query.param}`);
+                }
           }
         />
       </div>

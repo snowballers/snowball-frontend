@@ -4,7 +4,7 @@ import FlexBox from '@components/FlexBox';
 import TownTitleBox from '@components/Town/TownTitleBox';
 import CameraBtn from '@components/Town/CameraBtn';
 import ShareBtn from '@components/Town/ShareBtn';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Gear from '@components/icons/Gear';
 import SnowmanList from '@components/SnowmanList';
 import Snowflake from '@components/Snowflake';
@@ -19,7 +19,7 @@ type Props = {
 
 const TownTemplate = (props: Props) => {
   const { title, url } = props;
-  const { data, isLoading, isError } = useReadTown(url);
+  const { data, isLoading, isError, fetchStatus } = useReadTown(url);
   const pageRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
@@ -29,12 +29,10 @@ const TownTemplate = (props: Props) => {
   const { data: townData } = data?.data;
   const { isMine, townName, totalSnowman, snowmans } = townData;
 
+  if (fetchStatus === 'idle' && totalSnowman === 0) router.push(`/question/${url}`);
+
   const direction = isMine ? 'flex-row' : 'flex-col';
   const onClick = () => router.push('/setting');
-
-  if (snowmans.length === 0) {
-    router.push(`/question/${url}`);
-  }
 
   return (
     <div ref={pageRef} className="relative w-full h-[100vh]">
