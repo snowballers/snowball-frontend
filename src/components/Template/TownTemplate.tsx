@@ -19,7 +19,7 @@ type Props = {
 
 const TownTemplate = (props: Props) => {
   const { title, url } = props;
-  const { data, isLoading, isError } = useReadTown(url);
+  const { data, isLoading, isError, fetchStatus } = useReadTown(url);
   const pageRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
@@ -28,6 +28,8 @@ const TownTemplate = (props: Props) => {
 
   const { data: townData } = data?.data;
   const { isMine, townName, totalSnowman, snowmans } = townData;
+
+  if (fetchStatus === 'idle' && totalSnowman === 0) router.push(`/question/${url}`);
 
   const direction = isMine ? 'flex-row' : 'flex-col';
   const onClick = () => router.push('/setting');

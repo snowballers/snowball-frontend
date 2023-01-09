@@ -5,7 +5,7 @@ export const setTownURL = (townURL: string) => {
 };
 
 export const getTownURL = () => {
-  return localStorage.getItem(TOWNURL);
+  return typeof window !== "undefined" ? localStorage?.getItem(TOWNURL) : '';
 };
 
 export const deleteTownURL = () => {
