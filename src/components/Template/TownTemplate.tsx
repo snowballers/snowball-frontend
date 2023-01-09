@@ -32,6 +32,10 @@ const TownTemplate = (props: Props) => {
   const direction = isMine ? 'flex-row' : 'flex-col';
   const onClick = () => router.push('/setting');
 
+  if (snowmans.length === 0) {
+    router.push(`/question/${url}`);
+  }
+
   return (
     <div ref={pageRef} className="relative w-full h-[100vh]">
       <Snowflake />

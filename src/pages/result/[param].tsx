@@ -7,8 +7,11 @@ import { useInView } from 'react-intersection-observer';
 import { useState, useRef, useEffect } from 'react';
 import useResultPage from '@hooks/Result/useResultPage';
 import { Loading } from '@components/Question';
+import { getTownURL } from 'src/utils/town';
+import { useRouter } from 'next/router';
 
 const Result: NextPage = () => {
+  const router = useRouter();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isClicked, setClicked] = useState(false);
 
@@ -54,7 +57,7 @@ const Result: NextPage = () => {
           setLetter={setLetter}
           createLetter={createLetter}
         />
-        <ReadMoreButton isClicked={isClicked} onClick={onClick} />
+        {router.query.param !== getTownURL() && <ReadMoreButton isClicked={isClicked} onClick={onClick} />}
         <div ref={ref} className="absolute -bottom-5"></div>
       </Container>
     </div>

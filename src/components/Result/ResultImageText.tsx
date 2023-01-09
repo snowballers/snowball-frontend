@@ -6,6 +6,8 @@ import Button from '@components/Button';
 import { Snowman } from '@api/types';
 import Snowflake from '@components/Snowflake';
 import { RefObject } from 'react';
+import { useRouter } from 'next/router';
+import { getTownURL } from 'src/utils/town';
 
 type Props = {
   scrollRef: RefObject<HTMLDivElement>;
@@ -18,6 +20,8 @@ type Props = {
 };
 
 const ResultImageText = ({ scrollRef, nickname, percent, snowman, letter, setLetter, createLetter }: Props) => {
+  const router = useRouter();
+
   return (
     <div ref={scrollRef} className="absolute w-full sm:w-[480px] z-50" style={{ background: 'rgb(237, 239, 247)' }}>
       <Snowflake />
@@ -35,7 +39,7 @@ const ResultImageText = ({ scrollRef, nickname, percent, snowman, letter, setLet
       <div className="px-10 pt-8">
         <p className="text-center text-gray-600 leading-relaxed">{snowman?.description}</p>
       </div>
-      <LetterInputBox setLetter={setLetter} />
+      {router.query.param !== getTownURL() && <LetterInputBox setLetter={setLetter} />}
       <div className="mx-auto w-5/6 py-8">
         <Button width="w-full" text="완성!" selected={true} onClick={() => createLetter({ snowmanId: snowman?.id, letter })} />
       </div>

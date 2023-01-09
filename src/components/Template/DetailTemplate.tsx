@@ -35,7 +35,13 @@ const DetailTemplate = (props: Props) => {
       </button>
       <Image className="absolute -z-[10] w-full h-100vh" src="/image/hometown.png" alt="마을 배경 이미지" width="0" height="0" sizes="100vw" />
       <div className="text-center pt-20 text-primary-50 text-2xl inset-x-0">
-        <span className="text-primary-300">{senderName}</span>님이 만든
+        {senderName !== url ? (
+          <>
+            <span className="text-primary-300">{senderName}</span> 님이 만든
+          </>
+        ) : (
+          <>내가 만든</>
+        )}
       </div>
       <Title text={`${snowman.name}`} className="text-center text-primary-50 text-3xl inset-x-0 pt-4" />
       <div className="inset-x-0">
@@ -44,7 +50,7 @@ const DetailTemplate = (props: Props) => {
       <div className="px-10">
         <p className="text-center text-gray-600 leading-relaxed">{snowman.description}</p>
       </div>
-      <LetterWrapper letter={letter} />
+      {senderName !== url && <LetterWrapper letter={letter} />}
     </div>
   );
 };
