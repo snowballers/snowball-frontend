@@ -7,6 +7,7 @@ import Snowflake from '@components/Snowflake';
 import Title from '@components/Title';
 
 import { useReadSnowman } from '@hooks/api/useSnowman';
+import { useReadTown } from '@hooks/api/useTown';
 
 type Props = {
   url: string;
@@ -16,7 +17,12 @@ type Props = {
 const DetailTemplate = (props: Props) => {
   const router = useRouter();
   const { url, snowmanId } = props;
-  const onClick = () => router.push(`/town/${url}`);
+  const { refetch } = useReadTown(url);
+
+  const onClick = () => {
+    router.push(`/town/${url}`);
+    refetch();
+  };
 
   const { data, isLoading, isError } = useReadSnowman(snowmanId);
 
