@@ -4,7 +4,7 @@ import FlexBox from '@components/FlexBox';
 import TownTitleBox from '@components/Town/TownTitleBox';
 import CameraBtn from '@components/Town/CameraBtn';
 import ShareBtn from '@components/Town/ShareBtn';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import Gear from '@components/icons/Gear';
 import SnowmanList from '@components/SnowmanList';
 import Snowflake from '@components/Snowflake';
