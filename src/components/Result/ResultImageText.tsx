@@ -41,7 +41,14 @@ const ResultImageText = ({ scrollRef, nickname, percent, snowman, letter, setLet
       </div>
       {router.query.param !== getTownURL() && <LetterInputBox setLetter={setLetter} />}
       <div className="mx-auto w-5/6 py-8">
-        <Button width="w-full" text="완성!" selected={true} onClick={() => createLetter({ snowmanId: snowman?.id, letter })} />
+        <Button
+          width="w-full"
+          text="완성!"
+          selected={true}
+          onClick={
+            router.query.param !== getTownURL() ? () => createLetter({ snowmanId: snowman?.id, letter }) : () => router.push(`/town/${router.query.param}`)
+          }
+        />
       </div>
     </div>
   );
