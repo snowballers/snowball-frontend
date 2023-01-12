@@ -12,6 +12,7 @@ import { useRouter } from 'next/router';
 
 const Result: NextPage = () => {
   const router = useRouter();
+  const isSelfTown = router.query.param === getTownURL();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isClicked, setClicked] = useState(false);
 
@@ -57,7 +58,7 @@ const Result: NextPage = () => {
           setLetter={setLetter}
           createLetter={createLetter}
         />
-        {router.query.param !== getTownURL() && <ReadMoreButton isClicked={isClicked} onClick={onClick} />}
+        {!isSelfTown && <ReadMoreButton isClicked={isClicked} onClick={onClick} />}
         <div ref={ref} className="absolute -bottom-5"></div>
       </Container>
     </div>

@@ -21,6 +21,7 @@ type Props = {
 
 const ResultImageText = ({ scrollRef, nickname, percent, snowman, letter, setLetter, createLetter }: Props) => {
   const router = useRouter();
+  const isSelfTown = router.query.param === getTownURL();
 
   return (
     <div ref={scrollRef} className="absolute w-full sm:w-[480px] z-50" style={{ background: 'rgb(237, 239, 247)' }}>
@@ -39,15 +40,13 @@ const ResultImageText = ({ scrollRef, nickname, percent, snowman, letter, setLet
       <div className="px-10 pt-8">
         <p className="text-center text-gray-600 leading-relaxed">{snowman?.description}</p>
       </div>
-      {router.query.param !== getTownURL() && <LetterInputBox setLetter={setLetter} />}
+      {!isSelfTown && <LetterInputBox setLetter={setLetter} />}
       <div className="mx-auto w-5/6 py-8">
         <Button
           width="w-full"
           text="완성!"
           selected={true}
-          onClick={
-            router.query.param !== getTownURL() ? () => createLetter({ snowmanId: snowman?.id, letter }) : () => router.push(`/town/${router.query.param}`)
-          }
+          onClick={!isSelfTown ? () => createLetter({ snowmanId: snowman?.id, letter }) : () => router.push(`/town/${router.query.param}`)}
         />
       </div>
     </div>

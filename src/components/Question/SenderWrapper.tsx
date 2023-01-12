@@ -13,18 +13,19 @@ type Props = {
 
 const SenderWrapper = ({ setSender, setIsSender }: Props) => {
   const router = useRouter();
+  const isSelfTown = router.query.param === getTownURL();
 
   useEffect(() => {
     if (!router.isReady) return;
-    if (router.query.param === getTownURL()) {
-      setSender(router.query.param);
+    if (isSelfTown) {
+      setSender(router.query.param as string);
     }
-  }, [router.isReady, router.query, setSender]);
+  }, [router.isReady, router.query, isSelfTown, setSender]);
 
   return (
     <Container bgColor="bg-primary-100">
       <FlexBox className="z-10 justify-center items-center pt-[40vh]" direction="flex-col" position="relative">
-        {router.query.param === getTownURL() ? (
+        {isSelfTown ? (
           <Title text="당신의 눈사람을 직접 만들어보세요!" className="text-primary-600 text-2xl mb-6" />
         ) : (
           <>
