@@ -1,9 +1,10 @@
+import { CLIENT_RENDERED } from 'src/constants/window';
 import {  toastSuccess,  toastError } from 'src/utils/toaster';
 
 type onCopyFn = (text: string) => void;
 
 function getCurrentUrl() {
-  if (typeof window !== 'undefined') return `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
+  if (CLIENT_RENDERED) return `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
   return '';
 }
 

@@ -1,10 +1,11 @@
 import { AxiosInstance } from 'axios';
+import { CLIENT_RENDERED } from 'src/constants/window';
 import { getAccessToken } from 'src/utils/auth';
 
 function setInterceptors(instance: AxiosInstance) {
   instance.interceptors.request.use(
     (config) => {
-      if (typeof window !== 'undefined' && config.headers) {
+      if (CLIENT_RENDERED && config.headers) {
         config.headers.Authorization = `Bearer ${getAccessToken()}`;
       }
       return config;
