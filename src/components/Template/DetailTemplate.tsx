@@ -8,6 +8,7 @@ import Title from '@components/Title';
 
 import { useReadSnowman } from '@hooks/api/useSnowman';
 import { useReadTown } from '@hooks/api/useTown';
+import { useEffect } from 'react';
 
 type Props = {
   url: string;
@@ -26,8 +27,8 @@ const DetailTemplate = (props: Props) => {
 
   const { data, isLoading, isError } = useReadSnowman(snowmanId);
 
-  if (isLoading) return <Loading type="loading" text="눈사람 정보 불러오는 중..." />;
-  if (isError) return <Loading type="error" text="눈사람 정보 불러오기 실패" />;
+  if (snowmanId && isLoading) return <Loading type="loading" text="눈사람 정보 불러오는 중..." />;
+  if (isError || !snowmanId) return <Loading type="error" text="눈사람 정보 불러오기 실패" />;
 
   const { data: snowmanData } = data?.data;
 
