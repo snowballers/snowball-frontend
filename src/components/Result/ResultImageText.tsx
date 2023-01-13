@@ -30,7 +30,7 @@ const ResultImageText = ({ scrollRef, nickname, percent, snowman, letter, setLet
       <Title text={`짠! ${nickname}님을 위한`} className="text-center pt-20 text-primary-50 text-2xl inset-x-0" />
       <Title text={`눈사람이 완성되었어요!`} className="text-center text-primary-50 text-2xl inset-x-0" />
       <div className="inset-x-0">
-        <Image className="mx-auto" src={`/snowman/${snowman?.type}.png`} alt="" width={350} height={350} />
+        <Image className="mx-auto" src={`/snowman/${snowman?.type.toLowerCase()}.png`} alt="" width={350} height={350} />
       </div>
       <p className="text-center text-xl text-primary-600">{snowman?.name}</p>
       <p className="text-center text-sm text-gray-400 pt-8">

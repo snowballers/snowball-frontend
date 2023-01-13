@@ -51,7 +51,7 @@ const DetailTemplate = (props: Props) => {
       </div>
       <Title text={`${snowman.name}`} className="text-center text-primary-50 text-3xl inset-x-0 pt-4" />
       <div className="inset-x-0">
-        <Image className="mx-auto" src={`/snowman/${snowman.type}.png`} alt="" width={350} height={350} />
+        <Image className="mx-auto" src={`/snowman/${snowman.type.toLowerCase()}.png`} alt="" width={350} height={350} />
       </div>
       <div className="px-10">
         <p className="text-center text-gray-600 leading-relaxed">{snowman.description}</p>
