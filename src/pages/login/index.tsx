@@ -1,24 +1,12 @@
 import type { NextPage } from 'next';
-import { useEffect } from 'react';
 
 import Container from '@components/Container';
 import Snowflake from '@components/Snowflake';
 import LoginIcon from '@components/Login/LoginIcon';
 import BaseImage from '@components/BaseImage';
 import { KAKAO_OAUTH_URL } from 'src/constants/oauth';
-import { getAccessToken } from 'src/utils/auth';
-import { getTownURL } from 'src/utils/town';
-import { useRouter } from 'next/router';
 
 const Login: NextPage = () => {
-  const router = useRouter();
-
-  useEffect(() => {
-    if (getAccessToken()) {
-      router.replace(`/town/${getTownURL()}`);
-    }
-  }, []);
-
   return (
     <Container>
       <Snowflake />
