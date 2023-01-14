@@ -36,16 +36,20 @@ const TownTitleBox = (props: Props) => {
 
   return (
     <FlexBox className="z-10 justify-center items-center pt-[133px]" direction="flex-col" position="relative">
-      <FlexBox position="relative" direction="flex-row" className={`w-full justify-center items-center pb-[6px] pr-[50px] pl-[${isMine ? '74' : '50'}px]`}>
+      <FlexBox
+        position="relative"
+        direction="flex-row"
+        className={`w-full justify-center items-center pb-[6px] pr-[50px] ${isMine ? 'pl-[74px]' : 'pl-[50px]'}`}
+      >
         {isEdit ? (
           <input
             placeholder="이름을 입력해주세요."
-            className="w-[100%] text-center text-primary-50 text-2xl pr-[13px] bg-transparent placeholder:text-xl placeholder:overflow-visible"
+            className={`w-[100%] text-center text-primary-50 text-2xl bg-transparent placeholder:text-xl placeholder:overflow-visible`}
             value={townValue}
             onChange={onChange}
           />
         ) : (
-          <Title text={`${townName}'s 눈사람 마을` || ''} className="text-center text-primary-50 text-3xl pr-[13px]" />
+          <Title text={`${townName}'s 눈사람 마을` || ''} className={`text-center text-primary-50 text-3xl ${isMine ? 'pr-[13px]' : ''}`} />
         )}
         {isMine && <Pencil onClick={onEdit} fill={isEdit ? '#55b8ff' : undefined} />}
       </FlexBox>
