@@ -38,6 +38,9 @@ const SenderWrapper = ({ setSender, setIsSender }: Props) => {
                 onChange={(e) => setSender(e.target.value)}
               />
             </FlexBox>
+            <FlexBox position="relative" direction="flex-row" className="w-full justify-center items-center mb-10 text-sm text-primary-600">
+              <p>상대방이라면 이 상황에선 어떻게 할까 생각하며 답변해 주세요!</p>
+            </FlexBox>
           </>
         )}
         <Button
