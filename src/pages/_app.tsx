@@ -21,11 +21,11 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>눈사람 마을</title>
-        <meta property="og:url" content="www.snowtown.team" />
+        <meta property="og:url" content="https://www.snowtown.team" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="눈사람 마을" />
         <meta property="og:description" content="친구들이 만들어주는 날 닮은 눈사람들" />
-        <meta property="og:image" content="/roll-cropped.gif" />
+        <meta property="og:image" content="https://www.snowtown.team/roll-cropped.gif" />
       </Head>
       <Toast />
       <QueryClientProvider client={queryClient}>
