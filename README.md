@@ -8,9 +8,9 @@
 
 > 친구의 성격 유형을 눈사람으로 나타내 편지와 함께 전달해주는 서비스 <br /><br /> **개발 기간: 2022. 12 ~ 2022. 01**
 
-## 배포 주소
+## ~~배포 주소~~ (서버 중단 상태)
 
-> [https://www.snowtown.team](https://www.snowtown.team)
+> ~~[https://www.snowtown.team](https://www.snowtown.team)~~
 
 ## 개발 환경
 
